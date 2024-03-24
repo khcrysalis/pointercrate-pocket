@@ -13,9 +13,10 @@ class APIAboutViewController: UIViewController, UITableViewDelegate, UITableView
     
     private var sourceTitle: String?
     private var sourceWebsite: String?
-    private var sourceIcon: UIImage?
+    private var sourceIcon: UIImage = UIImage(named: "unknown")!
     private var cellWebsite: URL?
     private var cellDocumentation: URL?
+    private var textColor: UIColor = .label
 
     var tableData: [[String]] {
         return [
@@ -41,9 +42,10 @@ class APIAboutViewController: UIViewController, UITableViewDelegate, UITableView
     func setTableValues() {
         sourceTitle = "Demon List"
         sourceWebsite = "pointercrate.com"
-        sourceIcon = UIImage(named: "Demon List Icon")
+        sourceIcon = UIImage(named: "Demon List Icon")!
         cellWebsite = URL(string: "https://pointercrate.com")
         cellDocumentation = URL(string: "https://pointercrate.com/documentation/index")
+        textColor = .systemRed
     }
 
     fileprivate func setupViews() {
@@ -101,11 +103,11 @@ extension APIAboutViewController {
             cell.detailTextLabel?.text = sourceWebsite
             cell.detailTextLabel?.textColor = .secondaryLabel
             cell.selectionStyle = .none
-            SectionIcons.sectionImage(to: cell, with: sourceIcon!)
+            SectionIcons.sectionImage(to: cell, with: sourceIcon)
         case
             "Documentation",
             "Website":
-            cell.textLabel?.textColor = .systemRed
+            cell.textLabel?.textColor = textColor
             cell.accessoryType = .disclosureIndicator
         default:
             break
