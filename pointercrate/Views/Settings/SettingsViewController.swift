@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Nuke
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -180,7 +181,10 @@ extension SettingsViewController {
             
         // Advanced
         case "Clear Network Cache":
-            let totalCacheSize = URLCache.shared.currentDiskUsage
+            var totalCacheSize = URLCache.shared.currentDiskUsage
+            if let nukeCache = ImagePipeline.shared.configuration.dataCache as? DataCache {
+                totalCacheSize += nukeCache.totalSize
+            }
             let message = "This action is irreversible. Cached network requests and images will be cleared."
             + "\n\n"
             + String("Cache size: \(ByteCountFormatter.string(fromByteCount: Int64(totalCacheSize), countStyle: .file))")
@@ -188,13 +192,17 @@ extension SettingsViewController {
             confirmAction(
                 title: "Clear Network Cache",
                 message: message
-            ) { self.clearNetworkCache() }
+            ) {
+                self.clearNetworkCache()
+            }
             
         case "Reset Settings":
             confirmAction(
                 title: "Reset Settings",
                 message: "This action is irreversible. All app and settings will be reset."
-            ) { self.resetSettings() }
+            ) {
+                self.resetSettings()
+            }
         default:
             break
         }
@@ -232,6 +240,14 @@ extension SettingsViewController {
     func clearNetworkCache() {
         URLCache.shared.removeAllCachedResponses()
         HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+        
+        if let dataCache = ImagePipeline.shared.configuration.dataCache as? DataCache {
+            dataCache.removeAll()
+        }
+        
+        if let imageCache = ImagePipeline.shared.configuration.imageCache as? Nuke.ImageCache {
+            imageCache.removeAll()
+        }
     }
 
     func resetSettings() {

@@ -13,6 +13,12 @@
 		33349B8E2BAD25540009AF41 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B8D2BAD25540009AF41 /* Preferences.swift */; };
 		33349B922BAD69610009AF41 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B912BAD69610009AF41 /* ProfileViewController.swift */; };
 		33349B942BADC2360009AF41 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B932BADC2360009AF41 /* UIColor.swift */; };
+		336A9D7D2BAE7EE100134693 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 336A9D7C2BAE7EE100134693 /* Nuke */; };
+		336A9D7F2BAE7EE100134693 /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 336A9D7E2BAE7EE100134693 /* NukeExtensions */; };
+		336A9D812BAE7EE100134693 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 336A9D802BAE7EE100134693 /* NukeUI */; };
+		336A9D832BAE7EE100134693 /* NukeVideo in Frameworks */ = {isa = PBXBuildFile; productRef = 336A9D822BAE7EE100134693 /* NukeVideo */; };
+		336A9DCC2BAEFFBE00134693 /* ListSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9DCB2BAEFFBE00134693 /* ListSearchController.swift */; };
+		336A9DCE2BAF0A3100134693 /* Demons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9DCD2BAF0A3100134693 /* Demons.swift */; };
 		339C00CC2BABE89A00944235 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C00CB2BABE89A00944235 /* AppDelegate.swift */; };
 		339C00D02BABE89A00944235 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C00CF2BABE89A00944235 /* TabbarController.swift */; };
 		339C00D52BABE89B00944235 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 339C00D42BABE89B00944235 /* Assets.xcassets */; };
@@ -29,8 +35,7 @@
 		339C01012BAC241300944235 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C01002BAC241300944235 /* main.swift */; };
 		339C01042BAC2A9700944235 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C01032BAC2A9700944235 /* Dictionary.swift */; };
 		339C01062BAC2AB100944235 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C01052BAC2AB100944235 /* Storage.swift */; };
-		339C01092BAC2B9900944235 /* GetListRankedDemons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C01082BAC2B9900944235 /* GetListRankedDemons.swift */; };
-		339C010E2BAC2EF700944235 /* Demons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C010D2BAC2EF700944235 /* Demons.swift */; };
+		339C01092BAC2B9900944235 /* GetDemons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C01082BAC2B9900944235 /* GetDemons.swift */; };
 		339C01112BAC3DCD00944235 /* DemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C01102BAC3DCC00944235 /* DemonCell.swift */; };
 		339C01152BAC697300944235 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C01142BAC697300944235 /* URL.swift */; };
 		339C01172BAC699200944235 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C01162BAC699200944235 /* UIView.swift */; };
@@ -44,6 +49,8 @@
 		33349B8D2BAD25540009AF41 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		33349B912BAD69610009AF41 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		33349B932BADC2360009AF41 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		336A9DCB2BAEFFBE00134693 /* ListSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSearchController.swift; sourceTree = "<group>"; };
+		336A9DCD2BAF0A3100134693 /* Demons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demons.swift; sourceTree = "<group>"; };
 		339C00C82BABE89A00944235 /* pointercrate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pointercrate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		339C00CB2BABE89A00944235 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		339C00CF2BABE89A00944235 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
@@ -62,8 +69,7 @@
 		339C01002BAC241300944235 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		339C01032BAC2A9700944235 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		339C01052BAC2AB100944235 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
-		339C01082BAC2B9900944235 /* GetListRankedDemons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetListRankedDemons.swift; sourceTree = "<group>"; };
-		339C010D2BAC2EF700944235 /* Demons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demons.swift; sourceTree = "<group>"; };
+		339C01082BAC2B9900944235 /* GetDemons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDemons.swift; sourceTree = "<group>"; };
 		339C01102BAC3DCC00944235 /* DemonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemonCell.swift; sourceTree = "<group>"; };
 		339C01142BAC697300944235 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		339C01162BAC699200944235 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -80,6 +86,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				336A9D812BAE7EE100134693 /* NukeUI in Frameworks */,
+				336A9D7D2BAE7EE100134693 /* Nuke in Frameworks */,
+				336A9D7F2BAE7EE100134693 /* NukeExtensions in Frameworks */,
+				336A9D832BAE7EE100134693 /* NukeVideo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +225,7 @@
 		339C01072BAC2B6A00944235 /* Demonlist */ = {
 			isa = PBXGroup;
 			children = (
-				339C01082BAC2B9900944235 /* GetListRankedDemons.swift */,
+				339C01082BAC2B9900944235 /* GetDemons.swift */,
 			);
 			path = Demonlist;
 			sourceTree = "<group>";
@@ -240,7 +250,7 @@
 		339C010C2BAC2EE400944235 /* Incoming */ = {
 			isa = PBXGroup;
 			children = (
-				339C010D2BAC2EF700944235 /* Demons.swift */,
+				336A9DCD2BAF0A3100134693 /* Demons.swift */,
 			);
 			path = Incoming;
 			sourceTree = "<group>";
@@ -249,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				339C00E32BABEA9400944235 /* ListViewController.swift */,
+				336A9DCB2BAEFFBE00134693 /* ListSearchController.swift */,
 				339C01102BAC3DCC00944235 /* DemonCell.swift */,
 			);
 			path = List;
@@ -279,6 +290,12 @@
 			dependencies = (
 			);
 			name = pointercrate;
+			packageProductDependencies = (
+				336A9D7C2BAE7EE100134693 /* Nuke */,
+				336A9D7E2BAE7EE100134693 /* NukeExtensions */,
+				336A9D802BAE7EE100134693 /* NukeUI */,
+				336A9D822BAE7EE100134693 /* NukeVideo */,
+			);
 			productName = pointercrate;
 			productReference = 339C00C82BABE89A00944235 /* pointercrate.app */;
 			productType = "com.apple.product-type.application";
@@ -307,6 +324,9 @@
 				Base,
 			);
 			mainGroup = 339C00BF2BABE89A00944235;
+			packageReferences = (
+				336A9D7B2BAE7EE100134693 /* XCRemoteSwiftPackageReference "Nuke" */,
+			);
 			productRefGroup = 339C00C92BABE89A00944235 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -333,12 +353,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				336A9DCC2BAEFFBE00134693 /* ListSearchController.swift in Sources */,
 				339C00D02BABE89A00944235 /* TabbarController.swift in Sources */,
-				339C010E2BAC2EF700944235 /* Demons.swift in Sources */,
 				33349B802BAD1B980009AF41 /* Accessories.swift in Sources */,
 				339C01042BAC2A9700944235 /* Dictionary.swift in Sources */,
+				336A9DCE2BAF0A3100134693 /* Demons.swift in Sources */,
 				339C00CC2BABE89A00944235 /* AppDelegate.swift in Sources */,
-				339C01092BAC2B9900944235 /* GetListRankedDemons.swift in Sources */,
+				339C01092BAC2B9900944235 /* GetDemons.swift in Sources */,
 				33349B922BAD69610009AF41 /* ProfileViewController.swift in Sources */,
 				339C00F82BAC090F00944235 /* BaseNetworking.swift in Sources */,
 				339C00E42BABEA9400944235 /* ListViewController.swift in Sources */,
@@ -491,6 +512,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DLSL362JHJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = pointercrate/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Demon List";
@@ -520,6 +542,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DLSL362JHJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = pointercrate/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Demon List";
@@ -564,6 +587,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		336A9D7B2BAE7EE100134693 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		336A9D7C2BAE7EE100134693 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 336A9D7B2BAE7EE100134693 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		336A9D7E2BAE7EE100134693 /* NukeExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 336A9D7B2BAE7EE100134693 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeExtensions;
+		};
+		336A9D802BAE7EE100134693 /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 336A9D7B2BAE7EE100134693 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
+		};
+		336A9D822BAE7EE100134693 /* NukeVideo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 336A9D7B2BAE7EE100134693 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeVideo;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 339C00C02BABE89A00944235 /* Project object */;
 }

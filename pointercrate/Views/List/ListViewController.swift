@@ -12,10 +12,10 @@ class ListViewController: UIViewController {
     private var collectionView: UICollectionView!
     private var activityIndicator: UIActivityIndicatorView!
     private var refreshControl: UIRefreshControl!
-    private var searchController = UISearchController(searchResultsController: nil)
+    public var searchController = UISearchController(searchResultsController: nil)
 
-    private var demons: [RankedDemons] = []
-    private var filteredDemons: [RankedDemons] = []
+    private var demons: [Demons] = []
+    private var filteredDemons: [Demons] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +46,9 @@ class ListViewController: UIViewController {
         self.activityIndicator.startAnimating()
         self.view.addSubview(activityIndicator)
         
-        refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshDemons(_:)), for: .valueChanged)
-        collectionView.refreshControl = refreshControl
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.addTarget(self, action: #selector(refreshDemons(_:)), for: .valueChanged)
+        self.collectionView.refreshControl = refreshControl
     }
     
     fileprivate func setupNavigation() {
@@ -71,16 +71,6 @@ class ListViewController: UIViewController {
         let n = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down"), style: .done, target: self, action: nil)
         self.navigationItem.rightBarButtonItem = n //uimenu to sort
     }
-    
-    fileprivate func setupSearchController() {
-        self.searchController.searchResultsUpdater = self
-        self.searchController.obscuresBackgroundDuringPresentation = false
-        self.searchController.hidesNavigationBarDuringPresentation = false
-        self.searchController.searchBar.placeholder = "Filter Demons"
-        self.navigationItem.searchController = searchController
-        self.definesPresentationContext = false
-        self.navigationItem.hidesSearchBarWhenScrolling = false
-    }
 }
 
 
@@ -101,27 +91,12 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 }
 
-extension ListViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        print("DEBUG PRINT:", searchController.searchBar.text!)
-    }
-    
-    public func inSearchMode(_ searchController: UISearchController) -> Bool {
-        let isActive = searchController.isActive
-        let searchText = searchController.searchBar.text ?? ""
-        
-        return isActive && !searchText.isEmpty
-    }
-}
-
-
 extension ListViewController {
     @objc private func refreshDemons(_ sender: Any) { loadDemons() }
     func loadDemons() {
         
         Task {
             do {
-                // For some reason, it was decided to go from 50 => 75 for the default on the website
                 self.demons = try await PointercrateAPI.shared.getRankedDemons(limit: 75)
             
                 DispatchQueue.main.async {

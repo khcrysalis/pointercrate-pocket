@@ -7,13 +7,15 @@
 
 import Foundation
 import UIKit
+import Nuke
+import NukeExtensions
 
 class DemonCell: UICollectionViewCell {
     private let nameLabel = UILabel()
     private let creatorLabel = UILabel()
     private let positionLabel = UILabel()
     
-    private let thumbnailImageView = UIImageView()
+    private let thumbnailImageView = GradientBlurImageView()
     private var gradientApplied = false
 
     
@@ -27,23 +29,29 @@ class DemonCell: UICollectionViewCell {
     }
     
     private func configureUI() {
-        backgroundColor = UIColor.tertiarySystemBackground
         layer.cornerRadius = 16
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.white.withAlphaComponent(0.1).cgColor
+        layer.borderWidth = 1.5
+        
+        let isDarkMode = traitCollection.userInterfaceStyle == .dark
+        if isDarkMode {
+            layer.borderColor = UIColor.white.withAlphaComponent(0.1).cgColor
+        } else {
+            layer.borderColor = UIColor.black.withAlphaComponent(0.1).cgColor
+        }
+        
         layer.masksToBounds = true
         
         thumbnailImageView.translatesAutoresizingMaskIntoConstraints = false
         thumbnailImageView.contentMode = .scaleAspectFill
         contentView.addSubview(thumbnailImageView)
-        
+
         NSLayoutConstraint.activate([
             thumbnailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             thumbnailImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             thumbnailImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
-        
+
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.textColor = .white
         nameLabel.font = UIFont.boldSystemFont(ofSize: UIFont.preferredFont(forTextStyle: .headline).pointSize + 3.0)
@@ -74,46 +82,55 @@ class DemonCell: UICollectionViewCell {
         ])
     }
     
-    func configure(with demon: RankedDemons) {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        let isDarkMode = traitCollection.userInterfaceStyle == .dark
+        if isDarkMode {
+            layer.borderColor = UIColor.white.withAlphaComponent(0.1).cgColor
+        } else {
+            layer.borderColor = UIColor.black.withAlphaComponent(0.1).cgColor
+        }
+    }
+
+    
+    func configure(with demon: Demons) {
         nameLabel.text = demon.name.description
         creatorLabel.text = demon.publisher.name + " | " + "ID: " + String(demon.id)
         positionLabel.text = "#" + demon.position.description
         
-        if let videoURL = URL(string: demon.video), let videoID = videoURL.queryParameters?["v"] {
-            let thumbnailURLString = "https://i.ytimg.com/vi/\(videoID)/mqdefault.jpg"
+        thumbnailImageView.image = nil
+        
+        if let thumbnailURL = URL(string: demon.thumbnail!) {
+            let request = ImageRequest(url: thumbnailURL)
             
-            if let thumbnailURL = URL(string: thumbnailURLString) {
-                DispatchQueue.global().async {
-                    if let cachedResponse = URLCache.shared.cachedResponse(for: URLRequest(url: thumbnailURL)),
-                       let image = UIImage(data: cachedResponse.data) {
-                        DispatchQueue.main.async {
-                            self.thumbnailImageView.image = image
-                            if !self.gradientApplied {
-                                self.thumbnailImageView.createGradientBlur()
-                                self.gradientApplied = true
-                            }
-                        }
-                    } else {
-                        URLSession.shared.dataTask(with: thumbnailURL) { (data, response, error) in
-                            if let data = data, let image = UIImage(data: data) {
-                                DispatchQueue.main.async {
-                                    self.thumbnailImageView.image = image
-                                    if !self.gradientApplied {
-                                        self.thumbnailImageView.createGradientBlur()
-                                        self.gradientApplied = true
-                                    }
+            if let image = ImagePipeline.shared.cache.cachedImage(for: request) {
+                thumbnailImageView.image = image.image
+            } else {
+                ImagePipeline.shared.loadImage(
+                    with: request,
+                    progress: nil,
+                    completion: { [weak self] result in
+                        guard let self = self else { return }
+                        switch result {
+                        case .success(let imageResponse):
+                            DispatchQueue.main.async {
+                                if self.nameLabel.text == demon.name.description {
+                                    self.thumbnailImageView.image = imageResponse.image
                                 }
-                                let cachedResponse = CachedURLResponse(response: response!, data: data)
-                            
-                                URLCache.shared.storeCachedResponse(cachedResponse, for: URLRequest(url: thumbnailURL))
                             }
+                        case .failure(let error):
+                            print("Image loading failed with error: \(error)")
                         }
-                        .resume()
                     }
-                }
+                )
             }
         }
     }
+    
+    
+    
+    
     
     // https://stackoverflow.com/a/54395216
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
