@@ -10,7 +10,7 @@ import UIKit
 class CustomSectionHeader: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: UIFont.preferredFont(forTextStyle: .title2).pointSize) // Change .caption1 to .title1
+        label.font = .systemFont(ofSize: 21, weight: .bold)
         label.textColor = UIColor.label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -42,8 +42,7 @@ class CustomSectionHeader: UIView {
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 2),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 2),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 7)
         ])
     }
 }

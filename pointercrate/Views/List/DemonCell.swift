@@ -22,6 +22,9 @@ class DemonCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+         addGestureRecognizer(tapGesture)
     }
     
     required init?(coder: NSCoder) {
@@ -147,11 +150,21 @@ class DemonCell: UICollectionViewCell {
         super.touchesCancelled(touches, with: event)
         animate(isHighlighted: false)
     }
+    
+    @objc private func handleTap(_ gesture: UITapGestureRecognizer) {
+        if gesture.state == .ended {
+            animate(isHighlighted: true) { _ in
+                self.animate(isHighlighted: false)
+            }
+        }
+    }
 
-    private func animate(isHighlighted: Bool, completion: ((Bool) -> Void)?=nil) {
+    private func animate(isHighlighted: Bool, completion: ((Bool) -> Void)? = nil) {
         let animationOptions: UIView.AnimationOptions = [.allowUserInteraction]
+        let duration: TimeInterval = 0.3
+
         if isHighlighted {
-            UIView.animate(withDuration: 0.5,
+            UIView.animate(withDuration: duration,
                            delay: 0,
                            usingSpringWithDamping: 1,
                            initialSpringVelocity: 0,
@@ -159,7 +172,7 @@ class DemonCell: UICollectionViewCell {
                             self.transform = .init(scaleX: 0.96, y: 0.96)
             }, completion: completion)
         } else {
-            UIView.animate(withDuration: 0.5,
+            UIView.animate(withDuration: duration,
                            delay: 0,
                            usingSpringWithDamping: 1,
                            initialSpringVelocity: 0,
@@ -168,4 +181,5 @@ class DemonCell: UICollectionViewCell {
             }, completion: completion)
         }
     }
+
 }

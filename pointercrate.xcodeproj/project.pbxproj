@@ -19,6 +19,8 @@
 		336A9D832BAE7EE100134693 /* NukeVideo in Frameworks */ = {isa = PBXBuildFile; productRef = 336A9D822BAE7EE100134693 /* NukeVideo */; };
 		336A9DCC2BAEFFBE00134693 /* ListSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9DCB2BAEFFBE00134693 /* ListSearchController.swift */; };
 		336A9DCE2BAF0A3100134693 /* Demons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9DCD2BAF0A3100134693 /* Demons.swift */; };
+		336A9DD32BAFE2AF00134693 /* APIAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9DD22BAFE2AF00134693 /* APIAboutViewController.swift */; };
+		336A9DD52BAFEC4400134693 /* SectionIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9DD42BAFEC4400134693 /* SectionIcons.swift */; };
 		339C00CC2BABE89A00944235 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C00CB2BABE89A00944235 /* AppDelegate.swift */; };
 		339C00D02BABE89A00944235 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C00CF2BABE89A00944235 /* TabbarController.swift */; };
 		339C00D52BABE89B00944235 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 339C00D42BABE89B00944235 /* Assets.xcassets */; };
@@ -51,6 +53,8 @@
 		33349B932BADC2360009AF41 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		336A9DCB2BAEFFBE00134693 /* ListSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSearchController.swift; sourceTree = "<group>"; };
 		336A9DCD2BAF0A3100134693 /* Demons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demons.swift; sourceTree = "<group>"; };
+		336A9DD22BAFE2AF00134693 /* APIAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAboutViewController.swift; sourceTree = "<group>"; };
+		336A9DD42BAFEC4400134693 /* SectionIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionIcons.swift; sourceTree = "<group>"; };
 		339C00C82BABE89A00944235 /* pointercrate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pointercrate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		339C00CB2BABE89A00944235 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		339C00CF2BABE89A00944235 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
@@ -104,6 +108,14 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		338E249D2BAFFBE500561B18 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				336A9DD22BAFE2AF00134693 /* APIAboutViewController.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		339C00BF2BABE89A00944235 = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +160,7 @@
 				339C010F2BAC3DB200944235 /* List */,
 				339C00E12BABE90200944235 /* ChangesViewController.swift */,
 				339C00EC2BABF3D700944235 /* Settings */,
+				338E249D2BAFFBE500561B18 /* Other */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -170,6 +183,7 @@
 				33349B842BAD1D860009AF41 /* AboutHeader.swift */,
 				339C00EA2BABEF6D00944235 /* SectionHeader.swift */,
 				33349B7F2BAD1B980009AF41 /* Accessories.swift */,
+				336A9DD42BAFEC4400134693 /* SectionIcons.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -357,6 +371,7 @@
 				339C00D02BABE89A00944235 /* TabbarController.swift in Sources */,
 				33349B802BAD1B980009AF41 /* Accessories.swift in Sources */,
 				339C01042BAC2A9700944235 /* Dictionary.swift in Sources */,
+				336A9DD52BAFEC4400134693 /* SectionIcons.swift in Sources */,
 				336A9DCE2BAF0A3100134693 /* Demons.swift in Sources */,
 				339C00CC2BABE89A00944235 /* AppDelegate.swift in Sources */,
 				339C01092BAC2B9900944235 /* GetDemons.swift in Sources */,
@@ -376,6 +391,7 @@
 				339C01012BAC241300944235 /* main.swift in Sources */,
 				339C01152BAC697300944235 /* URL.swift in Sources */,
 				33349B892BAD1E510009AF41 /* LicenseViewController.swift in Sources */,
+				336A9DD32BAFE2AF00134693 /* APIAboutViewController.swift in Sources */,
 				33349B8E2BAD25540009AF41 /* Preferences.swift in Sources */,
 				339C00FF2BAC171800944235 /* LoginSession.swift in Sources */,
 				339C01062BAC2AB100944235 /* Storage.swift in Sources */,

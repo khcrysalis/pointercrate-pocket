@@ -68,9 +68,21 @@ class ListViewController: UIViewController {
         self.navigationItem.title = nil
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: customView)]
         
-        let n = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down"), style: .done, target: self, action: nil)
-        self.navigationItem.rightBarButtonItem = n //uimenu to sort
+        let n = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .done, target: self, action: #selector(apiAboutButtonTapped))
+        self.navigationItem.rightBarButtonItem = n
     }
+    
+    @objc func apiAboutButtonTapped() {
+        let viewController = APIAboutViewController()
+        let navigationController = UINavigationController(rootViewController: viewController)
+        
+        if let presentationController = navigationController.presentationController as? UISheetPresentationController {
+            presentationController.detents = [.medium()]
+        }
+        
+        self.present(navigationController, animated: true)
+    }
+
 }
 
 
