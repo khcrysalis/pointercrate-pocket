@@ -23,6 +23,9 @@
 		336A9DD52BAFEC4400134693 /* SectionIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9DD42BAFEC4400134693 /* SectionIcons.swift */; };
 		338E24A02BB0193800561B18 /* ListCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E249F2BB0193800561B18 /* ListCollectionReusableView.swift */; };
 		338E24A92BB0F6F800561B18 /* ListFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E24A82BB0F6F800561B18 /* ListFilterController.swift */; };
+		338E24B32BB1AE8600561B18 /* LICENSE_Aidoku.md in Resources */ = {isa = PBXBuildFile; fileRef = 338E24B22BB1AE8600561B18 /* LICENSE_Aidoku.md */; };
+		338E24B52BB1AEBB00561B18 /* LICENSE_Nuke.md in Resources */ = {isa = PBXBuildFile; fileRef = 338E24B42BB1AEBB00561B18 /* LICENSE_Nuke.md */; };
+		338E24B72BB1AEE500561B18 /* EmptyPageStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E24B62BB1AEE500561B18 /* EmptyPageStackView.swift */; };
 		339C00CC2BABE89A00944235 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C00CB2BABE89A00944235 /* AppDelegate.swift */; };
 		339C00D02BABE89A00944235 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C00CF2BABE89A00944235 /* TabbarController.swift */; };
 		339C00D52BABE89B00944235 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 339C00D42BABE89B00944235 /* Assets.xcassets */; };
@@ -59,6 +62,9 @@
 		336A9DD42BAFEC4400134693 /* SectionIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionIcons.swift; sourceTree = "<group>"; };
 		338E249F2BB0193800561B18 /* ListCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionReusableView.swift; sourceTree = "<group>"; };
 		338E24A82BB0F6F800561B18 /* ListFilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFilterController.swift; sourceTree = "<group>"; };
+		338E24B22BB1AE8600561B18 /* LICENSE_Aidoku.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE_Aidoku.md; sourceTree = "<group>"; };
+		338E24B42BB1AEBB00561B18 /* LICENSE_Nuke.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE_Nuke.md; sourceTree = "<group>"; };
+		338E24B62BB1AEE500561B18 /* EmptyPageStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPageStackView.swift; sourceTree = "<group>"; };
 		339C00C82BABE89A00944235 /* pointercrate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pointercrate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		339C00CB2BABE89A00944235 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		339C00CF2BABE89A00944235 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
@@ -116,8 +122,18 @@
 			isa = PBXGroup;
 			children = (
 				336A9DD22BAFE2AF00134693 /* APIAboutViewController.swift */,
+				338E24B62BB1AEE500561B18 /* EmptyPageStackView.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		338E24B12BB1AE7900561B18 /* Licenses */ = {
+			isa = PBXGroup;
+			children = (
+				338E24B42BB1AEBB00561B18 /* LICENSE_Nuke.md */,
+				338E24B22BB1AE8600561B18 /* LICENSE_Aidoku.md */,
+			);
+			path = Licenses;
 			sourceTree = "<group>";
 		};
 		339C00BF2BABE89A00944235 = {
@@ -288,6 +304,7 @@
 		33E0F4832BADC38100242C93 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				338E24B12BB1AE7900561B18 /* Licenses */,
 				33E0F4842BADC3C600242C93 /* Overdose_Sunrise.ttf */,
 				339C00D42BABE89B00944235 /* Assets.xcassets */,
 			);
@@ -362,7 +379,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				33E0F4852BADC3C600242C93 /* Overdose_Sunrise.ttf in Resources */,
+				338E24B32BB1AE8600561B18 /* LICENSE_Aidoku.md in Resources */,
 				339C00D52BABE89B00944235 /* Assets.xcassets in Resources */,
+				338E24B52BB1AEBB00561B18 /* LICENSE_Nuke.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +408,7 @@
 				339C00EB2BABEF6D00944235 /* SectionHeader.swift in Sources */,
 				338E24A02BB0193800561B18 /* ListCollectionReusableView.swift in Sources */,
 				339C00E02BABE8E700944235 /* SettingsViewController.swift in Sources */,
+				338E24B72BB1AEE500561B18 /* EmptyPageStackView.swift in Sources */,
 				339C01172BAC699200944235 /* UIView.swift in Sources */,
 				339C01112BAC3DCD00944235 /* DemonCell.swift in Sources */,
 				339C00E22BABE90200944235 /* ChangesViewController.swift in Sources */,

@@ -15,8 +15,11 @@ class ListViewController: UIViewController {
     private var refreshControl: UIRefreshControl!
     public var searchController = UISearchController(searchResultsController: nil)
 
+    
     private var demons: [Demons] = []
     private var filteredDemons: [Demons] = []
+    
+    private lazy var emptyStackView = EmptyPageStackView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +44,18 @@ class ListViewController: UIViewController {
         self.collectionView.register(ListHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ListHeaderCollectionReusableView.identifier)
         self.view.addSubview(collectionView)
         self.collectionView.constraintCompletely(to: view)
+        
+        // empty text view
+        emptyStackView.isHidden = true
+        emptyStackView.title = "No Entries"
+        emptyStackView.text = "Check your internet connection and try again/"
+        emptyStackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(emptyStackView)
+
+        NSLayoutConstraint.activate([
+            emptyStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emptyStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
         
         self.activityIndicator = UIActivityIndicatorView(style: .large)
         self.activityIndicator.center = view.center
@@ -83,7 +98,6 @@ class ListViewController: UIViewController {
         if let presentationController = navigationController.presentationController as? UISheetPresentationController {
             presentationController.detents = [.medium()]
         }
-        
         self.present(navigationController, animated: true)
     }
 

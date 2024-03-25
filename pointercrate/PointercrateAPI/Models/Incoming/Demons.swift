@@ -10,11 +10,11 @@ import Foundation
 public struct Demons: Codable {
     /// Demon identifier
     public var id: Int
-    /// Demon name
-    public var position: Int
-    /// Demon list percentage requirement
-    public var name: String
     /// Demon position on the list
+    public var position: Int
+    /// Demon name
+    public var name: String
+    /// Demon list percentage requirement
     public var requirement: Int
     /// Demon verification video
     public var video: String?
