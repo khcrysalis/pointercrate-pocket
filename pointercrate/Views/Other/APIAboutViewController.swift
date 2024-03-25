@@ -40,7 +40,7 @@ class APIAboutViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func setTableValues() {
-        sourceTitle = "Demon List"
+        sourceTitle = "Pointercrate"
         sourceWebsite = "pointercrate.com"
         sourceIcon = UIImage(named: "Demon List Icon")!
         cellWebsite = URL(string: "https://pointercrate.com")
@@ -74,6 +74,19 @@ extension APIAboutViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return tableData[section].count }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { return sectionTitles[section] }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return sectionTitles[section].isEmpty ? 5 : 40 }
+    
+    
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return
+"""
+This application is not affiliated with any of the sources where their REST APIs are used.
+"""
+        default:
+            return nil
+        }
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 && indexPath.row == 0 {

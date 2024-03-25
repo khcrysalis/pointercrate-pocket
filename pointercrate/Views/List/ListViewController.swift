@@ -157,7 +157,7 @@ extension ListViewController {
                                                                                before: Filter.before)
             
                 DispatchQueue.main.async {
-                    UIView.transition(with: self.view, duration: 0.2, options: .transitionCrossDissolve, animations: {
+                    UIView.transition(with: self.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
                         self.collectionView.reloadData()
                         self.collectionView.refreshControl?.endRefreshing()
                         self.activityIndicator.stopAnimating()
