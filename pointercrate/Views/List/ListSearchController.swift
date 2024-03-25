@@ -12,10 +12,10 @@ extension ListViewController: UISearchResultsUpdating, UISearchControllerDelegat
     
     func setupSearchController() {
         self.searchController.searchResultsUpdater = self
-        self.searchController.obscuresBackgroundDuringPresentation = false
+        self.searchController.obscuresBackgroundDuringPresentation = true
         self.searchController.hidesNavigationBarDuringPresentation = true
-        self.searchController.searchBar.placeholder = "Filter Demons"
-        self.searchController.searchBar.scopeButtonTitles = ["Main", "Extended", "Legacy"]
+        self.searchController.searchBar.placeholder = "Search Demons"
+
         self.navigationItem.searchController = searchController
         self.definesPresentationContext = false
         self.navigationItem.hidesSearchBarWhenScrolling = false

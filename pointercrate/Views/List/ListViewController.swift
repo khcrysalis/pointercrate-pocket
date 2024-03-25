@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class ListViewController: UIViewController {
     
@@ -37,6 +38,7 @@ class ListViewController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.register(DemonCell.self, forCellWithReuseIdentifier: "DemonCell")
+        self.collectionView.register(ListHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ListHeaderCollectionReusableView.identifier)
         self.view.addSubview(collectionView)
         self.collectionView.constraintCompletely(to: view)
         
@@ -91,6 +93,37 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
         return demons.count
     }
     
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            let headerView = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: ListHeaderCollectionReusableView.identifier,
+                for: indexPath
+            ) as! ListHeaderCollectionReusableView
+            headerView.filterButton.addTarget(self, action: #selector(filterButtonTapped(_:)), for: .touchUpInside)
+            return headerView
+        } else {
+            return UICollectionReusableView()
+        }
+    }
+    
+    @objc func filterButtonTapped(_ sender: UIButton) {
+        let filterView = UIHostingController(rootView: ListFilterView())
+        filterView.modalPresentationStyle = .pageSheet
+        filterView.sheetPresentationController?.detents = [.medium(), .large()]
+        self.present(filterView, animated: true, completion: nil)
+    }
+
+
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(
+            width: view.frame.size.width,
+            height: 50
+        )
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DemonCell", for: indexPath) as! DemonCell
         let demon = demons[indexPath.item]
@@ -103,7 +136,11 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 }
 
-extension ListViewController {
+protocol DemonLoading {
+    func loadDemons()
+}
+
+extension ListViewController: DemonLoading {
     @objc private func refreshDemons(_ sender: Any) { loadDemons() }
     func loadDemons() {
         
@@ -128,4 +165,4 @@ extension ListViewController {
             }
         }
     }
-}//backButtonDisplayMode = .minimal
+}

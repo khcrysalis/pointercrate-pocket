@@ -32,8 +32,8 @@ class DemonCell: UICollectionViewCell {
     }
     
     private func configureUI() {
-        layer.cornerRadius = 16
-        layer.borderWidth = 1.5
+        layer.cornerRadius = 12
+        layer.borderWidth = 1
         
         let isDarkMode = traitCollection.userInterfaceStyle == .dark
         if isDarkMode {

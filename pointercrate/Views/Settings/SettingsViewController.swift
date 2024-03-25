@@ -173,7 +173,8 @@ extension SettingsViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellText = tableData[indexPath.section][indexPath.row]
         switch cellText {
-            
+        case "Uhmm!!!!":
+            break
         //
         case "Licenses":
             let l = LicensesViewController()
