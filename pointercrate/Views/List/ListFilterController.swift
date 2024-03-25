@@ -112,6 +112,7 @@ extension ListFilterView {
                         Filter.selectedList = selectedOption
                     }
                     presentationMode.wrappedValue.dismiss()
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
                 }) {
                     Text("Filter")
                         .font(.subheadline)

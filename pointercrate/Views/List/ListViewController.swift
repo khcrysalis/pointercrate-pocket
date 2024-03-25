@@ -51,6 +51,8 @@ class ListViewController: UIViewController {
         self.refreshControl = UIRefreshControl()
         self.refreshControl.addTarget(self, action: #selector(refreshDemons(_:)), for: .valueChanged)
         self.collectionView.refreshControl = refreshControl
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshDemons(_:)), name: NSNotification.Name(rawValue: "load"), object: nil)
     }
     
     fileprivate func setupNavigation() {
@@ -136,11 +138,7 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 }
 
-protocol DemonLoading {
-    func loadDemons()
-}
-
-extension ListViewController: DemonLoading {
+extension ListViewController {
     @objc private func refreshDemons(_ sender: Any) { loadDemons() }
     func loadDemons() {
         
