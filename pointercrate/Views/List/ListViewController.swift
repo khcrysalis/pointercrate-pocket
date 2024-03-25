@@ -104,6 +104,7 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
                 for: indexPath
             ) as! ListHeaderCollectionReusableView
             headerView.filterButton.addTarget(self, action: #selector(filterButtonTapped(_:)), for: .touchUpInside)
+            headerView.title = ListOption(rawValue: Filter.selectedList)?.title
             return headerView
         } else {
             return UICollectionReusableView()
@@ -144,10 +145,19 @@ extension ListViewController {
         
         Task {
             do {
-                self.demons = try await PointercrateAPI.shared.getRankedDemons(limit: 75)
+                self.demons = try await PointercrateAPI.shared.getRankedDemons(name: Filter.name,
+                                                                               nameContains: Filter.nameContains,
+                                                                               requirement: Filter.requirement,
+                                                                               verifierID: Filter.verifierID,
+                                                                               publisherID: Filter.publisherID,
+                                                                               verifierName: Filter.verifierName,
+                                                                               publisherName: Filter.publisherName,
+                                                                               limit: Filter.limit,
+                                                                               after: Filter.after,
+                                                                               before: Filter.before)
             
                 DispatchQueue.main.async {
-                    UIView.transition(with: self.view, duration: 0.4, options: .transitionFlipFromTop, animations: {
+                    UIView.transition(with: self.view, duration: 0.2, options: .transitionCrossDissolve, animations: {
                         self.collectionView.reloadData()
                         self.collectionView.refreshControl?.endRefreshing()
                         self.activityIndicator.stopAnimating()

@@ -8,9 +8,6 @@
 import Foundation
 import UIKit
 
-protocol ListHeaderCollectionReusableViewDelegate: AnyObject {
-    
-}
 class ListHeaderCollectionReusableView: UICollectionReusableView {
     static let identifier = "ListHeaderCollectionReusableView"
     
@@ -29,10 +26,10 @@ class ListHeaderCollectionReusableView: UICollectionReusableView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+        
     func layoutViews() {
         
-        titleLabel.text = "Main"
+        titleLabel.text = title
         titleLabel.textColor = .label
         titleLabel.font = .systemFont(ofSize: 21, weight: .bold)
 

@@ -181,5 +181,4 @@ class DemonCell: UICollectionViewCell {
             }, completion: completion)
         }
     }
-
 }
