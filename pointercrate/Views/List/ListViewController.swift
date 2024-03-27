@@ -14,7 +14,6 @@ class ListViewController: UIViewController {
     private var activityIndicator: UIActivityIndicatorView!
     private var refreshControl: UIRefreshControl!
     public var searchController = UISearchController(searchResultsController: nil)
-
     
     private var demons: [Demons] = []
     private var filteredDemons: [Demons] = []
@@ -35,15 +34,21 @@ class ListViewController: UIViewController {
         layout.minimumLineSpacing = 16
         layout.minimumInteritemSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16)
-        
+
         self.collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         self.collectionView.backgroundColor = UIColor.secondarySystemBackground
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        self.collectionView.register(DemonCell.self, forCellWithReuseIdentifier: "DemonCell")
+        self.collectionView.register(ListDemonCell.self, forCellWithReuseIdentifier: "DemonCell")
         self.collectionView.register(ListHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ListHeaderCollectionReusableView.identifier)
         self.view.addSubview(collectionView)
-        self.collectionView.constraintCompletely(to: view)
+        
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
         
         // empty text view
         emptyStackView.isHidden = true
@@ -71,7 +76,7 @@ class ListViewController: UIViewController {
     }
     
     fileprivate func setupNavigation() {
-        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+        let customView = UIView()
         customView.translatesAutoresizingMaskIntoConstraints = false
         
         let titleLabel = UILabel()
@@ -142,14 +147,30 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DemonCell", for: indexPath) as! DemonCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DemonCell", for: indexPath) as! ListDemonCell
         let demon = demons[indexPath.item]
         cell.configure(with: demon)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width - 33, height: 150)
+        let sectionInset = (collectionViewLayout as? UICollectionViewFlowLayout)?.sectionInset ?? .zero
+        
+        let screenWidth = collectionView.bounds.width
+        var contentWidth: CGFloat = 0
+        
+        contentWidth = screenWidth - sectionInset.left - sectionInset.right
+        
+        return CGSize(width: contentWidth, height: 150)
+    }
+}
+
+extension ListViewController: UIViewControllerTransitioningDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let demon = demons[indexPath.item]
+        let demonVC = DemonViewController()
+        demonVC.demonID = demon.id
+        navigationController?.pushViewController(demonVC, animated: true)
     }
 }
 
@@ -171,11 +192,15 @@ extension ListViewController {
                                                                                before: Filter.before)
             
                 DispatchQueue.main.async {
-                    UIView.transition(with: self.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
-                        self.collectionView.reloadData()
-                        self.collectionView.refreshControl?.endRefreshing()
-                        self.activityIndicator.stopAnimating()
-                    }, completion: nil)
+                    UIView.transition(with: self.collectionView,
+                                      duration: 0.3,
+                                      options: .transitionCrossDissolve,
+                                      animations: {
+                                          self.collectionView.reloadData()
+                                      },
+                                      completion: nil)
+                    self.collectionView.refreshControl?.endRefreshing()
+                    self.activityIndicator.stopAnimating()
                 }
                 
             } catch {

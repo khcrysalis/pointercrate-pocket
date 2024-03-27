@@ -21,11 +21,15 @@ public struct Demons: Codable {
     /// Demon thumbnail URL
     public var thumbnail: String?
     /// Demon publisher based on geometry dash account
-    public var publisher: Publisher
+    public var publisher: Player
     /// Demon verifier, i.e. person who has beated and 'verified' the level to be uploaded to the gd servers
-    public var verifier: Verifier
+    public var verifier: Player
     /// Demon in-game level identifier
     public var level_id: Int?
+    /// Demon makers
+    public var creators: [Player]?
+    /// Demon records, not present always
+    public var records: [RecordListing]?
     
     enum CodingKeys: String, CodingKey {
         case id,
@@ -36,26 +40,9 @@ public struct Demons: Codable {
              thumbnail,
              publisher,
              verifier,
-             level_id
+             level_id,
+             creators,
+             records
     }
 }
 
-public struct Publisher: Codable {
-    public var id: Int
-    public var name: String
-    
-    enum CodingKeys: String, CodingKey {
-        case id,
-             name
-    }
-}
-
-public struct Verifier: Codable {
-    public var id: Int
-    public var name: String
-    
-    enum CodingKeys: String, CodingKey {
-        case id,
-             name
-    }
-}

@@ -10,7 +10,7 @@ import UIKit
 import Nuke
 import NukeExtensions
 
-class DemonCell: UICollectionViewCell {
+class ListDemonCell: UICollectionViewCell {
     private let nameLabel = UILabel()
     private let creatorLabel = UILabel()
     private let positionLabel = UILabel()
@@ -22,9 +22,6 @@ class DemonCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-         addGestureRecognizer(tapGesture)
     }
     
     required init?(coder: NSCoder) {
@@ -149,14 +146,6 @@ class DemonCell: UICollectionViewCell {
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesCancelled(touches, with: event)
         animate(isHighlighted: false)
-    }
-    
-    @objc private func handleTap(_ gesture: UITapGestureRecognizer) {
-        if gesture.state == .ended {
-            animate(isHighlighted: true) { _ in
-                self.animate(isHighlighted: false)
-            }
-        }
     }
 
     private func animate(isHighlighted: Bool, completion: ((Bool) -> Void)? = nil) {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		330D786B2BB3CCD800858187 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330D786A2BB3CCD800858187 /* Common.swift */; };
+		330D786E2BB3DF2100858187 /* DemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330D786D2BB3DF2100858187 /* DemonViewController.swift */; };
 		33349B802BAD1B980009AF41 /* Accessories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B7F2BAD1B980009AF41 /* Accessories.swift */; };
 		33349B852BAD1D860009AF41 /* AboutHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B842BAD1D860009AF41 /* AboutHeader.swift */; };
 		33349B892BAD1E510009AF41 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B882BAD1E510009AF41 /* LicenseViewController.swift */; };
@@ -26,6 +28,8 @@
 		338E24B32BB1AE8600561B18 /* LICENSE_Aidoku.md in Resources */ = {isa = PBXBuildFile; fileRef = 338E24B22BB1AE8600561B18 /* LICENSE_Aidoku.md */; };
 		338E24B52BB1AEBB00561B18 /* LICENSE_Nuke.md in Resources */ = {isa = PBXBuildFile; fileRef = 338E24B42BB1AEBB00561B18 /* LICENSE_Nuke.md */; };
 		338E24B72BB1AEE500561B18 /* EmptyPageStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E24B62BB1AEE500561B18 /* EmptyPageStackView.swift */; };
+		338E24B92BB2518200561B18 /* RecordListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E24B82BB2518200561B18 /* RecordListing.swift */; };
+		338E24BB2BB2538500561B18 /* GetRecordsListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E24BA2BB2538500561B18 /* GetRecordsListing.swift */; };
 		339C00CC2BABE89A00944235 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C00CB2BABE89A00944235 /* AppDelegate.swift */; };
 		339C00D02BABE89A00944235 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C00CF2BABE89A00944235 /* TabbarController.swift */; };
 		339C00D52BABE89B00944235 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 339C00D42BABE89B00944235 /* Assets.xcassets */; };
@@ -43,13 +47,15 @@
 		339C01042BAC2A9700944235 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C01032BAC2A9700944235 /* Dictionary.swift */; };
 		339C01062BAC2AB100944235 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C01052BAC2AB100944235 /* Storage.swift */; };
 		339C01092BAC2B9900944235 /* GetDemons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C01082BAC2B9900944235 /* GetDemons.swift */; };
-		339C01112BAC3DCD00944235 /* DemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C01102BAC3DCC00944235 /* DemonCell.swift */; };
+		339C01112BAC3DCD00944235 /* ListDemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C01102BAC3DCC00944235 /* ListDemonCell.swift */; };
 		339C01152BAC697300944235 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C01142BAC697300944235 /* URL.swift */; };
 		339C01172BAC699200944235 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C01162BAC699200944235 /* UIView.swift */; };
 		33E0F4852BADC3C600242C93 /* Overdose_Sunrise.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33E0F4842BADC3C600242C93 /* Overdose_Sunrise.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		330D786A2BB3CCD800858187 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		330D786D2BB3DF2100858187 /* DemonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemonViewController.swift; sourceTree = "<group>"; };
 		33349B7F2BAD1B980009AF41 /* Accessories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessories.swift; sourceTree = "<group>"; };
 		33349B842BAD1D860009AF41 /* AboutHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutHeader.swift; sourceTree = "<group>"; };
 		33349B882BAD1E510009AF41 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +71,8 @@
 		338E24B22BB1AE8600561B18 /* LICENSE_Aidoku.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE_Aidoku.md; sourceTree = "<group>"; };
 		338E24B42BB1AEBB00561B18 /* LICENSE_Nuke.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE_Nuke.md; sourceTree = "<group>"; };
 		338E24B62BB1AEE500561B18 /* EmptyPageStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPageStackView.swift; sourceTree = "<group>"; };
+		338E24B82BB2518200561B18 /* RecordListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListing.swift; sourceTree = "<group>"; };
+		338E24BA2BB2538500561B18 /* GetRecordsListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecordsListing.swift; sourceTree = "<group>"; };
 		339C00C82BABE89A00944235 /* pointercrate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pointercrate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		339C00CB2BABE89A00944235 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		339C00CF2BABE89A00944235 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
@@ -84,7 +92,7 @@
 		339C01032BAC2A9700944235 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		339C01052BAC2AB100944235 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		339C01082BAC2B9900944235 /* GetDemons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDemons.swift; sourceTree = "<group>"; };
-		339C01102BAC3DCC00944235 /* DemonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemonCell.swift; sourceTree = "<group>"; };
+		339C01102BAC3DCC00944235 /* ListDemonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDemonCell.swift; sourceTree = "<group>"; };
 		339C01142BAC697300944235 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		339C01162BAC699200944235 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		33E0F4842BADC3C600242C93 /* Overdose_Sunrise.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Overdose_Sunrise.ttf; sourceTree = "<group>"; };
@@ -110,6 +118,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		330D786C2BB3DF0600858187 /* DemonViewController */ = {
+			isa = PBXGroup;
+			children = (
+				330D786D2BB3DF2100858187 /* DemonViewController.swift */,
+			);
+			path = DemonViewController;
+			sourceTree = "<group>";
+		};
 		33349B8C2BAD25450009AF41 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				339C01082BAC2B9900944235 /* GetDemons.swift */,
+				338E24BA2BB2538500561B18 /* GetRecordsListing.swift */,
 			);
 			path = Demonlist;
 			sourceTree = "<group>";
@@ -285,6 +302,8 @@
 			isa = PBXGroup;
 			children = (
 				336A9DCD2BAF0A3100134693 /* Demons.swift */,
+				338E24B82BB2518200561B18 /* RecordListing.swift */,
+				330D786A2BB3CCD800858187 /* Common.swift */,
 			);
 			path = Incoming;
 			sourceTree = "<group>";
@@ -296,7 +315,8 @@
 				338E249F2BB0193800561B18 /* ListCollectionReusableView.swift */,
 				336A9DCB2BAEFFBE00134693 /* ListSearchController.swift */,
 				338E24A82BB0F6F800561B18 /* ListFilterController.swift */,
-				339C01102BAC3DCC00944235 /* DemonCell.swift */,
+				339C01102BAC3DCC00944235 /* ListDemonCell.swift */,
+				330D786C2BB3DF0600858187 /* DemonViewController */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -403,15 +423,18 @@
 				33349B922BAD69610009AF41 /* ProfileViewController.swift in Sources */,
 				339C00F82BAC090F00944235 /* BaseNetworking.swift in Sources */,
 				339C00E42BABEA9400944235 /* ListViewController.swift in Sources */,
+				338E24B92BB2518200561B18 /* RecordListing.swift in Sources */,
 				33349B942BADC2360009AF41 /* UIColor.swift in Sources */,
+				330D786B2BB3CCD800858187 /* Common.swift in Sources */,
 				339C00F62BAC068700944235 /* Config.swift in Sources */,
 				339C00EB2BABEF6D00944235 /* SectionHeader.swift in Sources */,
 				338E24A02BB0193800561B18 /* ListCollectionReusableView.swift in Sources */,
 				339C00E02BABE8E700944235 /* SettingsViewController.swift in Sources */,
 				338E24B72BB1AEE500561B18 /* EmptyPageStackView.swift in Sources */,
 				339C01172BAC699200944235 /* UIView.swift in Sources */,
-				339C01112BAC3DCD00944235 /* DemonCell.swift in Sources */,
+				339C01112BAC3DCD00944235 /* ListDemonCell.swift in Sources */,
 				339C00E22BABE90200944235 /* ChangesViewController.swift in Sources */,
+				330D786E2BB3DF2100858187 /* DemonViewController.swift in Sources */,
 				339C00E82BABED5A00944235 /* BasicLayoutAnchorsHolding.swift in Sources */,
 				33349B852BAD1D860009AF41 /* AboutHeader.swift in Sources */,
 				339C00FD2BAC16ED00944235 /* Auth.swift in Sources */,
@@ -421,6 +444,7 @@
 				336A9DD32BAFE2AF00134693 /* APIAboutViewController.swift in Sources */,
 				33349B8E2BAD25540009AF41 /* Preferences.swift in Sources */,
 				339C00FF2BAC171800944235 /* LoginSession.swift in Sources */,
+				338E24BB2BB2538500561B18 /* GetRecordsListing.swift in Sources */,
 				338E24A92BB0F6F800561B18 /* ListFilterController.swift in Sources */,
 				339C01062BAC2AB100944235 /* Storage.swift in Sources */,
 				339C00FA2BAC122B00944235 /* PointercrateAPI.swift in Sources */,

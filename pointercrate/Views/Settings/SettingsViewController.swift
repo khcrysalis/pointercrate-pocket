@@ -21,7 +21,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         return [
             ["Uhmm!!!!"],
             ["Licenses", "GitHub Repository", "Support via Ko-Fi"],
-            ["Clear Network Cache", "Reset Settings"]
+            ["GET", "Clear Network Cache", "Reset Settings"]
         ]
     }
     var sectionTitles: [String] {
@@ -173,6 +173,15 @@ extension SettingsViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellText = tableData[indexPath.section][indexPath.row]
         switch cellText {
+        case "GET":
+            Task {
+                do {
+                    let demons = try await PointercrateAPI.shared.getDemon(id: 562)
+                    print(demons)
+                } catch {
+                    print("Error fetching demons: \(error)")
+                }
+            }
         case "Uhmm!!!!":
             break
         //
