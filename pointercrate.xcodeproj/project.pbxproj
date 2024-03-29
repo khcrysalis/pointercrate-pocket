@@ -10,7 +10,7 @@
 		330D786B2BB3CCD800858187 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330D786A2BB3CCD800858187 /* Common.swift */; };
 		330D786E2BB3DF2100858187 /* DemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330D786D2BB3DF2100858187 /* DemonViewController.swift */; };
 		33349B802BAD1B980009AF41 /* Accessories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B7F2BAD1B980009AF41 /* Accessories.swift */; };
-		33349B852BAD1D860009AF41 /* AboutHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B842BAD1D860009AF41 /* AboutHeader.swift */; };
+		33349B852BAD1D860009AF41 /* DemonHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B842BAD1D860009AF41 /* DemonHeader.swift */; };
 		33349B892BAD1E510009AF41 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B882BAD1E510009AF41 /* LicenseViewController.swift */; };
 		33349B8E2BAD25540009AF41 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B8D2BAD25540009AF41 /* Preferences.swift */; };
 		33349B922BAD69610009AF41 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B912BAD69610009AF41 /* ProfileViewController.swift */; };
@@ -57,7 +57,7 @@
 		330D786A2BB3CCD800858187 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		330D786D2BB3DF2100858187 /* DemonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemonViewController.swift; sourceTree = "<group>"; };
 		33349B7F2BAD1B980009AF41 /* Accessories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessories.swift; sourceTree = "<group>"; };
-		33349B842BAD1D860009AF41 /* AboutHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutHeader.swift; sourceTree = "<group>"; };
+		33349B842BAD1D860009AF41 /* DemonHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemonHeader.swift; sourceTree = "<group>"; };
 		33349B882BAD1E510009AF41 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		33349B8D2BAD25540009AF41 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		33349B912BAD69610009AF41 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -216,7 +216,7 @@
 		339C00E92BABEF5B00944235 /* Design */ = {
 			isa = PBXGroup;
 			children = (
-				33349B842BAD1D860009AF41 /* AboutHeader.swift */,
+				33349B842BAD1D860009AF41 /* DemonHeader.swift */,
 				339C00EA2BABEF6D00944235 /* SectionHeader.swift */,
 				33349B7F2BAD1B980009AF41 /* Accessories.swift */,
 				336A9DD42BAFEC4400134693 /* SectionIcons.swift */,
@@ -436,7 +436,7 @@
 				339C00E22BABE90200944235 /* ChangesViewController.swift in Sources */,
 				330D786E2BB3DF2100858187 /* DemonViewController.swift in Sources */,
 				339C00E82BABED5A00944235 /* BasicLayoutAnchorsHolding.swift in Sources */,
-				33349B852BAD1D860009AF41 /* AboutHeader.swift in Sources */,
+				33349B852BAD1D860009AF41 /* DemonHeader.swift in Sources */,
 				339C00FD2BAC16ED00944235 /* Auth.swift in Sources */,
 				339C01012BAC241300944235 /* main.swift in Sources */,
 				339C01152BAC697300944235 /* URL.swift in Sources */,

@@ -24,3 +24,20 @@ extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: 1.0)
     }
 }
+
+extension UIColor {
+	static func interpolate(from: UIColor, to: UIColor, with alpha: CGFloat) -> UIColor {
+		var fromRed: CGFloat = 0, fromGreen: CGFloat = 0, fromBlue: CGFloat = 0, fromAlpha: CGFloat = 0
+		from.getRed(&fromRed, green: &fromGreen, blue: &fromBlue, alpha: &fromAlpha)
+		
+		var toRed: CGFloat = 0, toGreen: CGFloat = 0, toBlue: CGFloat = 0, toAlpha: CGFloat = 0
+		to.getRed(&toRed, green: &toGreen, blue: &toBlue, alpha: &toAlpha)
+		
+		let interpolatedRed = fromRed + (toRed - fromRed) * alpha
+		let interpolatedGreen = fromGreen + (toGreen - fromGreen) * alpha
+		let interpolatedBlue = fromBlue + (toBlue - fromBlue) * alpha
+		let interpolatedAlpha = fromAlpha + (toAlpha - fromAlpha) * alpha
+		
+		return UIColor(red: interpolatedRed, green: interpolatedGreen, blue: interpolatedBlue, alpha: interpolatedAlpha)
+	}
+}

@@ -13,7 +13,7 @@ public struct RecordListing: Codable {
     /// Record demon progress (max 100)
     public var progress: Int
     /// Record proof recording
-    public var video: String
+    public var video: String?
     /// Record status
     public var approved: String?
     /// Demon thats associated with record
@@ -21,7 +21,7 @@ public struct RecordListing: Codable {
     /// Player who've submitted record
     public var player: Player
     /// Nationality of said player
-    public var nationality: Nationality
+    public var nationality: Nationality?
     
     enum CodingKeys: String, CodingKey {
         case id,
