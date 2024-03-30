@@ -38,11 +38,7 @@ class DemonViewController: UIViewController {
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(false)
-		let defaultAppearance = UINavigationBarAppearance()
-		self.navigationController?.navigationBar.standardAppearance = defaultAppearance
-		self.navigationController?.navigationBar.scrollEdgeAppearance = defaultAppearance
-		self.navigationController?.navigationBar.compactAppearance = defaultAppearance
-		self.navigationController?.navigationBar.tintColor = .tintColor
+		//self.navigationController?.navigationBar.tintColor = UIColor.tintColor
 	}
 	
 	fileprivate func setupViews() {
@@ -100,25 +96,22 @@ class DemonViewController: UIViewController {
 		let start: CGFloat = -160
 		let length: CGFloat = 30
 		
-		if tableView.contentOffset.y < start {
-			self.navigationController?.navigationBar.tintColor = UIColor.white
-			let appearance = UINavigationBarAppearance()
-			appearance.configureWithTransparentBackground()
-			appearance.backgroundColor = UIColor.systemBackground.withAlphaComponent(0)
-			navigationController?.navigationBar.standardAppearance = appearance
-			navigationController?.navigationBar.scrollEdgeAppearance = appearance
-			navigationController?.navigationBar.compactAppearance = appearance
-		} else if tableView.contentOffset.y > start && tableView.contentOffset.y < length + start {
-			let alpha = (tableView.contentOffset.y - start) / length
-			let interpolatedColor = UIColor.interpolate(from: .white, to: .tintColor, with: alpha)
-			self.navigationController?.navigationBar.tintColor = interpolatedColor
-		} else if tableView.contentOffset.y >= length + start {
-			self.navigationController?.navigationBar.tintColor = .tintColor
-			let defaultAppearance = UINavigationBarAppearance()
-			navigationController?.navigationBar.standardAppearance = defaultAppearance
-			navigationController?.navigationBar.scrollEdgeAppearance = defaultAppearance
-			navigationController?.navigationBar.compactAppearance = defaultAppearance
-		}
+//		if tableView.contentOffset.y < start {
+//			self.navigationController!.navigationBar.tintColor = UIColor.white
+//			let appearance = UINavigationBarAppearance()
+//			appearance.configureWithTransparentBackground()
+//			appearance.backgroundColor = UIColor.systemBackground.withAlphaComponent(0)
+//			navigationController!.navigationBar.standardAppearance = appearance
+//			navigationController!.navigationBar.scrollEdgeAppearance = appearance
+//			navigationController!.navigationBar.compactAppearance = appearance
+//		} else if tableView.contentOffset.y > start && tableView.contentOffset.y < length + start {
+//			let alpha = (tableView.contentOffset.y - start) / length
+//			let interpolatedColor = UIColor.interpolate(from: .white, to: .tintColor, with: alpha)
+//			self.navigationController!.navigationBar.tintColor = interpolatedColor
+//		} else if tableView.contentOffset.y >= length + start {
+//			self.navigationController!.navigationBar.tintColor = .tintColor
+//			navigationController!.resetToDefaultAppearance()
+//		}
 	}
 }
 
