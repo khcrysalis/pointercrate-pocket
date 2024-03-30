@@ -51,6 +51,7 @@
 		339C01152BAC697300944235 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C01142BAC697300944235 /* URL.swift */; };
 		339C01172BAC699200944235 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C01162BAC699200944235 /* UIView.swift */; };
 		33E0F4852BADC3C600242C93 /* Overdose_Sunrise.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33E0F4842BADC3C600242C93 /* Overdose_Sunrise.ttf */; };
+		AA90C3042BB8382F00158D15 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA90C3032BB8382F00158D15 /* AuthResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +102,7 @@
 		33E0F4892BADD8FC00242C93 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		33E0F48A2BADD90200242C93 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		33E0F48B2BADD91B00242C93 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		AA90C3032BB8382F00158D15 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +306,7 @@
 				336A9DCD2BAF0A3100134693 /* Demons.swift */,
 				338E24B82BB2518200561B18 /* RecordListing.swift */,
 				330D786A2BB3CCD800858187 /* Common.swift */,
+				AA90C3032BB8382F00158D15 /* AuthResponse.swift */,
 			);
 			path = Incoming;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				336A9DD52BAFEC4400134693 /* SectionIcons.swift in Sources */,
 				336A9DCE2BAF0A3100134693 /* Demons.swift in Sources */,
 				339C00CC2BABE89A00944235 /* AppDelegate.swift in Sources */,
+				AA90C3042BB8382F00158D15 /* AuthResponse.swift in Sources */,
 				339C01092BAC2B9900944235 /* GetDemons.swift in Sources */,
 				33349B922BAD69610009AF41 /* ProfileViewController.swift in Sources */,
 				339C00F82BAC090F00944235 /* BaseNetworking.swift in Sources */,

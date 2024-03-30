@@ -10,7 +10,7 @@ import Foundation
 public class PointercrateAPI: ObservableObject {
     public static let shared = PointercrateAPI()
     
-    //public static let auth = Session()
+    public static let auth = Session()
     
     // specifically varget so that the session is recreated every time its needed
     // so that the additional headers can be updated
