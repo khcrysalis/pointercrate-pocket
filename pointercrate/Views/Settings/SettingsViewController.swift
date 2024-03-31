@@ -46,7 +46,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     fileprivate func setupViews() {
         self.tableView = UITableView(frame: .zero, style: .insetGrouped)
-        self.tableView.backgroundColor = UIColor.secondarySystemBackground
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -141,7 +140,6 @@ extension SettingsViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
-        cell.backgroundColor = UIColor.tertiarySystemBackground
         cell.selectionStyle = .default
         cell.accessoryType = .none
         
@@ -174,14 +172,7 @@ extension SettingsViewController {
         let cellText = tableData[indexPath.section][indexPath.row]
         switch cellText {
         case "GET":
-            Task {
-                do {
-                    let demons = try await PointercrateAPI.shared.getDemon(id: 562)
-                    print(demons)
-                } catch {
-                    print("Error fetching demons: \(error)")
-                }
-            }
+			Preferences.isOnboardingActive = true
         case "Uhmm!!!!":
             break
         //

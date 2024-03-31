@@ -144,7 +144,7 @@ extension ListFilterView {
                      listOption.updateFilter()
                  }
                  updateViews()
-             }, foregroundStyle: .white, backgroundColor: .accentColor, buttonText: "Filter")
+			}, foregroundStyle: Color(UIColor(light: .white, dark: .black)), backgroundColor: Color(UIColor.tintColor), buttonText: "Filter")
         }
     }
 }

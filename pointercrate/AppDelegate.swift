@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = tabBarController
         
         DispatchQueue.main.async {
-            self.window!.tintColor = .systemTeal
+			self.window!.tintColor = .label
             self.window!.overrideUserInterfaceStyle = UIUserInterfaceStyle(rawValue: Preferences.preferredInterfaceStyle) ?? .unspecified
         }
         

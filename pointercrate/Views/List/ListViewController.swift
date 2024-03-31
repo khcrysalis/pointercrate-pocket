@@ -36,7 +36,6 @@ class ListViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16)
 
         self.collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
-        self.collectionView.backgroundColor = UIColor.secondarySystemBackground
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.register(ListDemonCell.self, forCellWithReuseIdentifier: "DemonCell")

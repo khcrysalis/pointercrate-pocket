@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController {
     }
     
     fileprivate func setupViews() {
-        view.backgroundColor = .secondarySystemGroupedBackground
+		self.view.backgroundColor = .systemBackground
     }
     
     fileprivate func setupNavigation() {

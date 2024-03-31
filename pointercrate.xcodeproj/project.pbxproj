@@ -9,12 +9,17 @@
 /* Begin PBXBuildFile section */
 		330D786B2BB3CCD800858187 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330D786A2BB3CCD800858187 /* Common.swift */; };
 		330D786E2BB3DF2100858187 /* DemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330D786D2BB3DF2100858187 /* DemonViewController.swift */; };
+		3316365D2BB9F5C40070C94E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3316365C2BB9F5C40070C94E /* Launch Screen.storyboard */; };
 		33349B802BAD1B980009AF41 /* Accessories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B7F2BAD1B980009AF41 /* Accessories.swift */; };
 		33349B852BAD1D860009AF41 /* DemonHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B842BAD1D860009AF41 /* DemonHeader.swift */; };
 		33349B892BAD1E510009AF41 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B882BAD1E510009AF41 /* LicenseViewController.swift */; };
 		33349B8E2BAD25540009AF41 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B8D2BAD25540009AF41 /* Preferences.swift */; };
 		33349B922BAD69610009AF41 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B912BAD69610009AF41 /* ProfileViewController.swift */; };
 		33349B942BADC2360009AF41 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B932BADC2360009AF41 /* UIColor.swift */; };
+		336686AE2BB8E5B000AC59C9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336686AD2BB8E5B000AC59C9 /* OnboardingViewController.swift */; };
+		336686B62BB9135900AC59C9 /* Onboarding.mov in Resources */ = {isa = PBXBuildFile; fileRef = 336686B52BB9135800AC59C9 /* Onboarding.mov */; };
+		336686B82BB928A700AC59C9 /* OnboardingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336686B72BB928A700AC59C9 /* OnboardingButton.swift */; };
+		336686BA2BB928CB00AC59C9 /* OnboardingBackdrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336686B92BB928CB00AC59C9 /* OnboardingBackdrop.swift */; };
 		336A9D7D2BAE7EE100134693 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 336A9D7C2BAE7EE100134693 /* Nuke */; };
 		336A9D7F2BAE7EE100134693 /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 336A9D7E2BAE7EE100134693 /* NukeExtensions */; };
 		336A9D812BAE7EE100134693 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 336A9D802BAE7EE100134693 /* NukeUI */; };
@@ -34,7 +39,6 @@
 		339C00D02BABE89A00944235 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C00CF2BABE89A00944235 /* TabbarController.swift */; };
 		339C00D52BABE89B00944235 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 339C00D42BABE89B00944235 /* Assets.xcassets */; };
 		339C00E02BABE8E700944235 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C00DF2BABE8E700944235 /* SettingsViewController.swift */; };
-		339C00E22BABE90200944235 /* ChangesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C00E12BABE90200944235 /* ChangesViewController.swift */; };
 		339C00E42BABEA9400944235 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C00E32BABEA9400944235 /* ListViewController.swift */; };
 		339C00E82BABED5A00944235 /* BasicLayoutAnchorsHolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C00E72BABED5A00944235 /* BasicLayoutAnchorsHolding.swift */; };
 		339C00EB2BABEF6D00944235 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C00EA2BABEF6D00944235 /* SectionHeader.swift */; };
@@ -57,12 +61,17 @@
 /* Begin PBXFileReference section */
 		330D786A2BB3CCD800858187 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		330D786D2BB3DF2100858187 /* DemonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemonViewController.swift; sourceTree = "<group>"; };
+		3316365C2BB9F5C40070C94E /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		33349B7F2BAD1B980009AF41 /* Accessories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessories.swift; sourceTree = "<group>"; };
 		33349B842BAD1D860009AF41 /* DemonHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemonHeader.swift; sourceTree = "<group>"; };
 		33349B882BAD1E510009AF41 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		33349B8D2BAD25540009AF41 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		33349B912BAD69610009AF41 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		33349B932BADC2360009AF41 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		336686AD2BB8E5B000AC59C9 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		336686B52BB9135800AC59C9 /* Onboarding.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Onboarding.mov; sourceTree = "<group>"; };
+		336686B72BB928A700AC59C9 /* OnboardingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingButton.swift; sourceTree = "<group>"; };
+		336686B92BB928CB00AC59C9 /* OnboardingBackdrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBackdrop.swift; sourceTree = "<group>"; };
 		336A9DCB2BAEFFBE00134693 /* ListSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSearchController.swift; sourceTree = "<group>"; };
 		336A9DCD2BAF0A3100134693 /* Demons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demons.swift; sourceTree = "<group>"; };
 		336A9DD22BAFE2AF00134693 /* APIAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAboutViewController.swift; sourceTree = "<group>"; };
@@ -80,7 +89,6 @@
 		339C00D42BABE89B00944235 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		339C00D92BABE89B00944235 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		339C00DF2BABE8E700944235 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		339C00E12BABE90200944235 /* ChangesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangesViewController.swift; sourceTree = "<group>"; };
 		339C00E32BABEA9400944235 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		339C00E72BABED5A00944235 /* BasicLayoutAnchorsHolding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLayoutAnchorsHolding.swift; sourceTree = "<group>"; };
 		339C00EA2BABEF6D00944235 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
@@ -136,6 +144,16 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		336686AC2BB8E41E00AC59C9 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				336686AD2BB8E5B000AC59C9 /* OnboardingViewController.swift */,
+				336686B72BB928A700AC59C9 /* OnboardingButton.swift */,
+				336686B92BB928CB00AC59C9 /* OnboardingBackdrop.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		338E249D2BAFFBE500561B18 /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,12 +198,12 @@
 			children = (
 				339C01002BAC241300944235 /* main.swift */,
 				339C00CB2BABE89A00944235 /* AppDelegate.swift */,
-				339C00CF2BABE89A00944235 /* TabbarController.swift */,
 				339C00E52BABEAA600944235 /* Views */,
 				339C00E92BABEF5B00944235 /* Design */,
 				339C00E62BABED3F00944235 /* Extensions */,
 				339C01022BAC2A5A00944235 /* Storage */,
 				339C010B2BAC2EBF00944235 /* PointercrateAPI */,
+				3316365C2BB9F5C40070C94E /* Launch Screen.storyboard */,
 				33E0F4832BADC38100242C93 /* Resources */,
 				339C00D92BABE89B00944235 /* Info.plist */,
 			);
@@ -195,8 +213,9 @@
 		339C00E52BABEAA600944235 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				339C00CF2BABE89A00944235 /* TabbarController.swift */,
+				336686AC2BB8E41E00AC59C9 /* Onboarding */,
 				339C010F2BAC3DB200944235 /* List */,
-				339C00E12BABE90200944235 /* ChangesViewController.swift */,
 				339C00EC2BABF3D700944235 /* Settings */,
 				338E249D2BAFFBE500561B18 /* Other */,
 			);
@@ -330,6 +349,7 @@
 				338E24B12BB1AE7900561B18 /* Licenses */,
 				33E0F4842BADC3C600242C93 /* Overdose_Sunrise.ttf */,
 				339C00D42BABE89B00944235 /* Assets.xcassets */,
+				336686B52BB9135800AC59C9 /* Onboarding.mov */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -401,8 +421,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3316365D2BB9F5C40070C94E /* Launch Screen.storyboard in Resources */,
 				33E0F4852BADC3C600242C93 /* Overdose_Sunrise.ttf in Resources */,
 				338E24B32BB1AE8600561B18 /* LICENSE_Aidoku.md in Resources */,
+				336686B62BB9135900AC59C9 /* Onboarding.mov in Resources */,
 				339C00D52BABE89B00944235 /* Assets.xcassets in Resources */,
 				338E24B52BB1AEBB00561B18 /* LICENSE_Nuke.md in Resources */,
 			);
@@ -432,12 +454,13 @@
 				330D786B2BB3CCD800858187 /* Common.swift in Sources */,
 				339C00F62BAC068700944235 /* Config.swift in Sources */,
 				339C00EB2BABEF6D00944235 /* SectionHeader.swift in Sources */,
+				336686BA2BB928CB00AC59C9 /* OnboardingBackdrop.swift in Sources */,
 				338E24A02BB0193800561B18 /* ListCollectionReusableView.swift in Sources */,
 				339C00E02BABE8E700944235 /* SettingsViewController.swift in Sources */,
 				338E24B72BB1AEE500561B18 /* EmptyPageStackView.swift in Sources */,
 				339C01172BAC699200944235 /* UIView.swift in Sources */,
 				339C01112BAC3DCD00944235 /* ListDemonCell.swift in Sources */,
-				339C00E22BABE90200944235 /* ChangesViewController.swift in Sources */,
+				336686AE2BB8E5B000AC59C9 /* OnboardingViewController.swift in Sources */,
 				330D786E2BB3DF2100858187 /* DemonViewController.swift in Sources */,
 				339C00E82BABED5A00944235 /* BasicLayoutAnchorsHolding.swift in Sources */,
 				33349B852BAD1D860009AF41 /* DemonHeader.swift in Sources */,
@@ -445,6 +468,7 @@
 				339C01012BAC241300944235 /* main.swift in Sources */,
 				339C01152BAC697300944235 /* URL.swift in Sources */,
 				33349B892BAD1E510009AF41 /* LicenseViewController.swift in Sources */,
+				336686B82BB928A700AC59C9 /* OnboardingButton.swift in Sources */,
 				336A9DD32BAFE2AF00134693 /* APIAboutViewController.swift in Sources */,
 				33349B8E2BAD25540009AF41 /* Preferences.swift in Sources */,
 				339C00FF2BAC171800944235 /* LoginSession.swift in Sources */,
@@ -590,7 +614,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Demon List";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -620,7 +644,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Demon List";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

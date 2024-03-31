@@ -41,3 +41,11 @@ extension UIColor {
 		return UIColor(red: interpolatedRed, green: interpolatedGreen, blue: interpolatedBlue, alpha: interpolatedAlpha)
 	}
 }
+// https://stackoverflow.com/a/69345997
+extension UIColor {
+	/// Creates a color object that responds to `userInterfaceStyle` trait changes.
+	public convenience init(light: UIColor, dark: UIColor) {
+	  guard #available(iOS 13.0, *) else { self.init(cgColor: light.cgColor); return }
+	  self.init(dynamicProvider: { $0.userInterfaceStyle == .dark ? dark : light })
+	}
+}

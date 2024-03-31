@@ -9,8 +9,11 @@ import Foundation
 import UIKit
 
 enum Preferences {
-    @Storage(key: "userIntefaceStyle", defaultValue: UIUserInterfaceStyle.unspecified.rawValue)
+    @Storage(key: "Pointercrate.userIntefacerStyle", defaultValue: UIUserInterfaceStyle.unspecified.rawValue)
     static var preferredInterfaceStyle: Int
+	
+	@Storage(key: "Pointercrate.OnboardingActive", defaultValue: true)
+	static var isOnboardingActive: Bool
 }
 // MARK: - Callbacks
 fileprivate extension Preferences {
