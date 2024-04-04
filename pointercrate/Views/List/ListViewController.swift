@@ -10,15 +10,16 @@ import SwiftUI
 
 class ListViewController: UIViewController {
     
-    private var collectionView: UICollectionView!
+    public var collectionView: UICollectionView!
+	private lazy var emptyStackView = EmptyPageStackView()
+	public var searchController = UISearchController(searchResultsController: nil)
+
     private var activityIndicator: UIActivityIndicatorView!
     private var refreshControl: UIRefreshControl!
-    public var searchController = UISearchController(searchResultsController: nil)
     
-    private var demons: [Demons] = []
-    private var filteredDemons: [Demons] = []
-    
-    private lazy var emptyStackView = EmptyPageStackView()
+	public var demons: [Demons] = []
+    public var filteredDemons: [Demons] = []
+	private var isLoadingMoreDemons = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,8 @@ class ListViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16)
 
         self.collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+		self.view.backgroundColor = UIColor(named: "Background")
+		self.collectionView.backgroundColor = UIColor(named: "Background")
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.register(ListDemonCell.self, forCellWithReuseIdentifier: "DemonCell")
@@ -52,7 +55,7 @@ class ListViewController: UIViewController {
         // empty text view
         emptyStackView.isHidden = true
         emptyStackView.title = "No Entries"
-        emptyStackView.text = "Check your internet connection and try again/"
+        emptyStackView.text = "Check your internet connection and try again"
         emptyStackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(emptyStackView)
 
@@ -61,7 +64,7 @@ class ListViewController: UIViewController {
             emptyStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
         
-        self.activityIndicator = UIActivityIndicatorView(style: .large)
+		self.activityIndicator = UIActivityIndicatorView(style: .medium)
         self.activityIndicator.center = view.center
         self.activityIndicator.hidesWhenStopped = true
         self.activityIndicator.startAnimating()
@@ -109,9 +112,13 @@ class ListViewController: UIViewController {
 
 
 extension ListViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return demons.count
-    }
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		if inSearchMode(searchController) {
+			return filteredDemons.count
+		} else {
+			return demons.count
+		}
+	}
     
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -145,12 +152,19 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
         )
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DemonCell", for: indexPath) as! ListDemonCell
-        let demon = demons[indexPath.item]
-        cell.configure(with: demon)
-        return cell
-    }
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DemonCell", for: indexPath) as! ListDemonCell
+		let demon: Demons
+		
+		if inSearchMode(searchController) {
+			demon = filteredDemons[indexPath.item]
+		} else {
+			demon = demons[indexPath.item]
+		}
+		
+		cell.configure(with: demon)
+		return cell
+	}
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let sectionInset = (collectionViewLayout as? UICollectionViewFlowLayout)?.sectionInset ?? .zero
@@ -165,18 +179,39 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 }
 
 extension ListViewController: UIViewControllerTransitioningDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let demon = demons[indexPath.item]
-        let demonVC = DemonViewController()
-        demonVC.demonID = demon.id
-        navigationController?.pushViewController(demonVC, animated: true)
-    }
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let demon: Demons
+		
+		if inSearchMode(searchController) {
+			demon = filteredDemons[indexPath.item]
+		} else {
+			demon = demons[indexPath.item]
+		}
+		
+		let demonVC = DemonViewController()
+		demonVC.demonID = demon.id
+		navigationController?.pushViewController(demonVC, animated: true)
+	}
+}
+
+extension ListViewController: UICollectionViewDelegate {
+	func scrollViewDidScroll(_ scrollView: UIScrollView) {
+		let offsetY = scrollView.contentOffset.y
+		let contentHeight = scrollView.contentSize.height
+		let height = scrollView.frame.size.height
+		
+		if offsetY > contentHeight - height {
+			if Filter.selectedList == 2 && !isLoadingMoreDemons {
+				loadMoreDemons()
+			}
+		}
+	}
 }
 
 extension ListViewController {
     @objc private func refreshDemons(_ sender: Any) { loadDemons() }
     func loadDemons() {
-        
+		ListOption(rawValue: Filter.selectedList)?.updateFilter()
         Task {
             do {
                 self.demons = try await PointercrateAPI.shared.getRankedDemons(name: Filter.name,
@@ -190,25 +225,72 @@ extension ListViewController {
                                                                                after: Filter.after,
                                                                                before: Filter.before)
             
-                DispatchQueue.main.async {
-                    UIView.transition(with: self.collectionView,
-                                      duration: 0.3,
-                                      options: .transitionCrossDissolve,
-                                      animations: {
-                                          self.collectionView.reloadData()
-                                      },
-                                      completion: nil)
-                    self.collectionView.refreshControl?.endRefreshing()
-                    self.activityIndicator.stopAnimating()
-                }
+				DispatchQueue.main.async {
+					UIView.animate(withDuration: 0.2, animations: {
+						self.collectionView.alpha = 0
+						self.activityIndicator.alpha = 0
+					}, completion: { _ in
+						self.collectionView.reloadData()
+						self.collectionView.refreshControl?.endRefreshing()
+						self.activityIndicator.stopAnimating()
+						
+						UIView.animate(withDuration: 0.2, animations: {
+							self.collectionView.alpha = 1
+						})
+					})
+				}
                 
             } catch {
-                print("Error fetching demons: \(error)")
-                DispatchQueue.main.async {
-                    self.collectionView.refreshControl?.endRefreshing()
-                    self.activityIndicator.stopAnimating()
-                }
-            }
+				print("Error fetching demons: \(error)")
+				DispatchQueue.main.async {
+					
+					UIView.animate(withDuration: 0.2, animations: {
+						self.emptyStackView.alpha = 0
+					}, completion: { _ in
+						self.collectionView.refreshControl?.endRefreshing()
+						self.activityIndicator.stopAnimating()
+						self.emptyStackView.isHidden = false
+						
+						UIView.animate(withDuration: 0.2, animations: {
+							self.emptyStackView.alpha = 1
+						})
+						
+					})
+				}
+			}
         }
     }
+	
+	func loadMoreDemons() {
+		isLoadingMoreDemons = true
+		Filter.after! += Filter.limit
+		Task {
+			do {
+				let moreDemons = try await PointercrateAPI.shared.getRankedDemons(name: Filter.name,
+																				   nameContains: Filter.nameContains,
+																				   requirement: Filter.requirement,
+																				   verifierID: Filter.verifierID,
+																				   publisherID: Filter.publisherID,
+																				   verifierName: Filter.verifierName,
+																				   publisherName: Filter.publisherName,
+																				   limit: Filter.limit,
+																				   after: Filter.after,
+																				   before: Filter.before)
+				self.demons.append(contentsOf: moreDemons)
+				DispatchQueue.main.async {
+					let startIndex = self.demons.count - moreDemons.count
+					let endIndex = self.demons.count
+					let indexPaths = (startIndex..<endIndex).map { IndexPath(item: $0, section: 0) }
+					self.collectionView.performBatchUpdates({
+						self.collectionView.insertItems(at: indexPaths)
+					}, completion: { _ in
+						self.isLoadingMoreDemons = false
+					})
+				}
+			} catch {
+				print("Error fetching more demons: \(error)")
+				self.isLoadingMoreDemons = false
+			}
+		}
+	}
 }

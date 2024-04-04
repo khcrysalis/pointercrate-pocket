@@ -47,6 +47,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     fileprivate func setupViews() {
         self.tableView = UITableView(frame: .zero, style: .insetGrouped)
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
+		self.tableView.backgroundColor = UIColor(named: "Background")
         self.tableView.dataSource = self
         self.tableView.delegate = self
     
@@ -69,7 +70,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.view.addSubview(tableView)
         self.tableView.constraintCompletely(to: view)
-        self.tableView.setLayoutMargins(UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16))
     }
     
     fileprivate func setupNavigation() {
