@@ -94,26 +94,6 @@ class DemonViewController: UIViewController {
 	
 	func scrollViewDidScroll(_ scrollView: UIScrollView) {
 		self.stickyHeaderController.layoutStickyView()
-		
-		let start: CGFloat = -160
-		let length: CGFloat = 30
-		
-//		if tableView.contentOffset.y < start {
-//			self.navigationController!.navigationBar.tintColor = UIColor.white
-//			let appearance = UINavigationBarAppearance()
-//			appearance.configureWithTransparentBackground()
-//			appearance.backgroundColor = UIColor.systemBackground.withAlphaComponent(0)
-//			navigationController!.navigationBar.standardAppearance = appearance
-//			navigationController!.navigationBar.scrollEdgeAppearance = appearance
-//			navigationController!.navigationBar.compactAppearance = appearance
-//		} else if tableView.contentOffset.y > start && tableView.contentOffset.y < length + start {
-//			let alpha = (tableView.contentOffset.y - start) / length
-//			let interpolatedColor = UIColor.interpolate(from: .white, to: .tintColor, with: alpha)
-//			self.navigationController!.navigationBar.tintColor = interpolatedColor
-//		} else if tableView.contentOffset.y >= length + start {
-//			self.navigationController!.navigationBar.tintColor = .tintColor
-//			navigationController!.resetToDefaultAppearance()
-//		}
 	}
 }
 
@@ -159,6 +139,7 @@ extension DemonViewController: UITableViewDelegate, UITableViewDataSource {
 				let flagEmoji = flag(country: countryCode)
 				cell.textLabel?.text = flagEmoji + record.player.name
 				cell.detailTextLabel?.text = "\(record.progress)%"
+				Append().accessoryIcon(to: cell, with: "arrow.up.right")
 			}
 		default:
 			break
@@ -169,7 +150,14 @@ extension DemonViewController: UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
+		
+		guard let records = records, indexPath.section == 1, let record = records.data.records?[indexPath.row], let videoURLString = record.video, let videoURL = URL(string: videoURLString) else {
+			return
+		}
+		
+		UIApplication.shared.open(videoURL)
 	}
+
 	
 	func flag(country: String?) -> String {
 		guard let countryCode = country else { return "" }
