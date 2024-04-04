@@ -96,7 +96,7 @@ class ListDemonCell: UICollectionViewCell {
     
     func configure(with demon: Demons) {
         nameLabel.text = demon.name.description
-        creatorLabel.text = demon.publisher.name + " | " + "ID: " + String(demon.id)
+        creatorLabel.text = "By \(demon.publisher.name)"
         positionLabel.text = "#" + demon.position.description
         
         thumbnailImageView.image = nil
