@@ -43,6 +43,8 @@ class DemonViewController: UIViewController {
 	
 	fileprivate func setupViews() {
 		self.tableView = UITableView(frame: .zero, style: .insetGrouped)
+		self.view.backgroundColor = UIColor(named: "Background")
+		self.tableView.backgroundColor = UIColor(named: "Background")
 		self.tableView.translatesAutoresizingMaskIntoConstraints = false
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
@@ -52,7 +54,7 @@ class DemonViewController: UIViewController {
 		self.tableView.constraintCompletely(to: view)
 		self.tableView.setLayoutMargins(UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16))
 		
-		self.activityIndicator = UIActivityIndicatorView(style: .large)
+		self.activityIndicator = UIActivityIndicatorView(style: .medium)
 		self.activityIndicator.center = CGPoint(x: view.center.x, y: view.center.y + 100)
 		self.activityIndicator.hidesWhenStopped = true
 		self.activityIndicator.startAnimating()

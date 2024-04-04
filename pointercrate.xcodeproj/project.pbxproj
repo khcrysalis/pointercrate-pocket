@@ -54,6 +54,9 @@
 		339C01112BAC3DCD00944235 /* ListDemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C01102BAC3DCC00944235 /* ListDemonCell.swift */; };
 		339C01152BAC697300944235 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C01142BAC697300944235 /* URL.swift */; };
 		339C01172BAC699200944235 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C01162BAC699200944235 /* UIView.swift */; };
+		33CF4E542BBE5F0F009C0129 /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CF4E532BBE5F0F009C0129 /* DisplayViewController.swift */; };
+		33CF4E562BBE5F83009C0129 /* UIInterfaceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CF4E552BBE5F83009C0129 /* UIInterfaceStyle.swift */; };
+		33CF4E592BBE6291009C0129 /* DisplayCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CF4E582BBE6291009C0129 /* DisplayCollectionTableViewCell.swift */; };
 		33E0F4852BADC3C600242C93 /* Overdose_Sunrise.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33E0F4842BADC3C600242C93 /* Overdose_Sunrise.ttf */; };
 		AA90C3042BB8382F00158D15 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA90C3032BB8382F00158D15 /* AuthResponse.swift */; };
 /* End PBXBuildFile section */
@@ -104,6 +107,9 @@
 		339C01102BAC3DCC00944235 /* ListDemonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDemonCell.swift; sourceTree = "<group>"; };
 		339C01142BAC697300944235 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		339C01162BAC699200944235 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		33CF4E532BBE5F0F009C0129 /* DisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayViewController.swift; sourceTree = "<group>"; };
+		33CF4E552BBE5F83009C0129 /* UIInterfaceStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIInterfaceStyle.swift; sourceTree = "<group>"; };
+		33CF4E582BBE6291009C0129 /* DisplayCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		33E0F4842BADC3C600242C93 /* Overdose_Sunrise.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Overdose_Sunrise.ttf; sourceTree = "<group>"; };
 		33E0F4862BADD8AA00242C93 /* .github */ = {isa = PBXFileReference; lastKnownFileType = folder; path = .github; sourceTree = "<group>"; };
 		33E0F4882BADD8EB00242C93 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -216,7 +222,7 @@
 				339C00CF2BABE89A00944235 /* TabbarController.swift */,
 				336686AC2BB8E41E00AC59C9 /* Onboarding */,
 				339C010F2BAC3DB200944235 /* List */,
-				339C00EC2BABF3D700944235 /* Settings */,
+				339C00EC2BABF3D700944235 /* Profile */,
 				338E249D2BAFFBE500561B18 /* Other */,
 			);
 			path = Views;
@@ -230,6 +236,7 @@
 				339C01142BAC697300944235 /* URL.swift */,
 				339C01162BAC699200944235 /* UIView.swift */,
 				33349B932BADC2360009AF41 /* UIColor.swift */,
+				33CF4E552BBE5F83009C0129 /* UIInterfaceStyle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -245,14 +252,13 @@
 			path = Design;
 			sourceTree = "<group>";
 		};
-		339C00EC2BABF3D700944235 /* Settings */ = {
+		339C00EC2BABF3D700944235 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				33349B912BAD69610009AF41 /* ProfileViewController.swift */,
-				339C00DF2BABE8E700944235 /* SettingsViewController.swift */,
-				33349B882BAD1E510009AF41 /* LicenseViewController.swift */,
+				33CF4E522BBE5EFB009C0129 /* Settings */,
 			);
-			path = Settings;
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		339C00F12BAC032600944235 /* API */ = {
@@ -341,6 +347,25 @@
 				330D786C2BB3DF0600858187 /* DemonViewController */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		33CF4E522BBE5EFB009C0129 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				339C00DF2BABE8E700944235 /* SettingsViewController.swift */,
+				33CF4E572BBE6272009C0129 /* Display */,
+				33349B882BAD1E510009AF41 /* LicenseViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		33CF4E572BBE6272009C0129 /* Display */ = {
+			isa = PBXGroup;
+			children = (
+				33CF4E532BBE5F0F009C0129 /* DisplayViewController.swift */,
+				33CF4E582BBE6291009C0129 /* DisplayCollectionTableViewCell.swift */,
+			);
+			path = Display;
 			sourceTree = "<group>";
 		};
 		33E0F4832BADC38100242C93 /* Resources */ = {
@@ -447,6 +472,7 @@
 				AA90C3042BB8382F00158D15 /* AuthResponse.swift in Sources */,
 				339C01092BAC2B9900944235 /* GetDemons.swift in Sources */,
 				33349B922BAD69610009AF41 /* ProfileViewController.swift in Sources */,
+				33CF4E562BBE5F83009C0129 /* UIInterfaceStyle.swift in Sources */,
 				339C00F82BAC090F00944235 /* BaseNetworking.swift in Sources */,
 				339C00E42BABEA9400944235 /* ListViewController.swift in Sources */,
 				338E24B92BB2518200561B18 /* RecordListing.swift in Sources */,
@@ -454,6 +480,7 @@
 				330D786B2BB3CCD800858187 /* Common.swift in Sources */,
 				339C00F62BAC068700944235 /* Config.swift in Sources */,
 				339C00EB2BABEF6D00944235 /* SectionHeader.swift in Sources */,
+				33CF4E592BBE6291009C0129 /* DisplayCollectionTableViewCell.swift in Sources */,
 				336686BA2BB928CB00AC59C9 /* OnboardingBackdrop.swift in Sources */,
 				338E24A02BB0193800561B18 /* ListCollectionReusableView.swift in Sources */,
 				339C00E02BABE8E700944235 /* SettingsViewController.swift in Sources */,
@@ -472,6 +499,7 @@
 				336A9DD32BAFE2AF00134693 /* APIAboutViewController.swift in Sources */,
 				33349B8E2BAD25540009AF41 /* Preferences.swift in Sources */,
 				339C00FF2BAC171800944235 /* LoginSession.swift in Sources */,
+				33CF4E542BBE5F0F009C0129 /* DisplayViewController.swift in Sources */,
 				338E24BB2BB2538500561B18 /* GetRecordsListing.swift in Sources */,
 				338E24A92BB0F6F800561B18 /* ListFilterController.swift in Sources */,
 				339C01062BAC2AB100944235 /* Storage.swift in Sources */,
