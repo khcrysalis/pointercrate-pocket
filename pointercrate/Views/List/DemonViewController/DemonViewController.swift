@@ -43,6 +43,7 @@ class DemonViewController: UIViewController {
 	
 	fileprivate func setupViews() {
 		self.tableView = UITableView(frame: .zero, style: .insetGrouped)
+		self.tableView.isHidden = true
 		self.view.backgroundColor = UIColor(named: "Background")
 		self.tableView.backgroundColor = UIColor(named: "Background")
 		self.tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +56,7 @@ class DemonViewController: UIViewController {
 		self.tableView.setLayoutMargins(UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16))
 		
 		self.activityIndicator = UIActivityIndicatorView(style: .medium)
-		self.activityIndicator.center = CGPoint(x: view.center.x, y: view.center.y + 100)
+		self.activityIndicator.center = CGPoint(x: view.center.x, y: view.center.y)
 		self.activityIndicator.hidesWhenStopped = true
 		self.activityIndicator.startAnimating()
 		self.view.addSubview(activityIndicator)
@@ -63,8 +64,8 @@ class DemonViewController: UIViewController {
 	
 	fileprivate func setupHeader() {
 		self.myHeaderView = UIView()
-		
-		let placeholderImageView = UIImageView(image: UIImage())
+		self.myHeaderView.isHidden = true
+		let placeholderImageView = UIImageView(image: UIImage(named: "defaultthumbnail"))
 		placeholderImageView.contentMode = .scaleAspectFill
 		self.myHeaderView.addSubview(placeholderImageView)
 		placeholderImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -88,7 +89,7 @@ class DemonViewController: UIViewController {
 		self.myHeaderView.sendSubviewToBack(placeholderImageView)
 		
 		self.headerImageView = placeholderImageView
-		self.stickyHeaderController = HeaderController(view: myHeaderView, height: 300)
+		self.stickyHeaderController = HeaderController(view: myHeaderView, height: 250)
 		self.stickyHeaderController.attach(to: tableView)
 	}
 	
@@ -180,17 +181,26 @@ extension DemonViewController {
 					let image = UIImage(data: imageData)
 					DispatchQueue.main.async {
 						UIView.transition(with: self.headerImageView!, duration: 0.3, options: .transitionCrossDissolve, animations: {
-							let title = self.records?.data.name ?? ""
-							let subtitle = "By \(self.records?.data.publisher.name ?? ""), verified by \(self.records?.data.verifier.name ?? "")"
-							
-							self.stickyHeaderController.updateTitle(title)
-							self.stickyHeaderController.updateSubtitle(subtitle)
+							self.stickyHeaderController?.updateButtonsatt(title: "\(self.records?.data.position ?? 0)", url: self.records?.data.video ?? "")
+							self.stickyHeaderController.updateTitle(self.records?.data.name ?? "")
+							self.stickyHeaderController.updateSubtitle("By \(self.records?.data.publisher.name ?? ""), verified by \(self.records?.data.verifier.name ?? "")")
 							self.stickyHeaderController.layoutStickyView()
+							self.myHeaderView.isHidden = false
+							self.tableView.isHidden = false
 							self.headerImageView?.image = image
-							
 						}, completion: nil)
 					}
+				} else {
+					DispatchQueue.main.async {
+						self.stickyHeaderController?.updateButtonsatt(title: "\(self.records?.data.position ?? 0)", url: self.records?.data.video ?? "")
+						self.stickyHeaderController.updateTitle(self.records?.data.name ?? "")
+						self.stickyHeaderController.updateSubtitle("By \(self.records?.data.publisher.name ?? ""), verified by \(self.records?.data.verifier.name ?? "")")
+						self.stickyHeaderController.layoutStickyView()
+						self.myHeaderView.isHidden = false
+						self.tableView.isHidden = false
+					}
 				}
+
 				
 				DispatchQueue.main.async {
 					UIView.transition(with: self.tableView, duration: 0.3, options: .transitionCrossDissolve, animations: {

@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GlyphDemon" translatesAutoresizingMaskIntoConstraints="NO" id="XgH-Hx-kB2">
-                                <rect key="frame" x="67" y="307" width="256" height="90"/>
+                                <rect key="frame" x="67" y="377" width="256" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="J8u-Wp-SAZ"/>
                                 </constraints>
@@ -26,7 +26,7 @@
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="XgH-Hx-kB2" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-70" id="Mmd-ot-9mn"/>
+                            <constraint firstItem="XgH-Hx-kB2" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Mmd-ot-9mn"/>
                             <constraint firstItem="XgH-Hx-kB2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="YIv-qG-jfG"/>
                         </constraints>
                     </view>

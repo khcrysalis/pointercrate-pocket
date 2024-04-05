@@ -65,21 +65,30 @@ class ListDemonCell: UICollectionViewCell {
         creatorLabel.font = UIFont.systemFont(ofSize: 12)
         contentView.addSubview(creatorLabel)
         
-        positionLabel.translatesAutoresizingMaskIntoConstraints = false
-        positionLabel.textColor = .lightText
-        positionLabel.font = UIFont.systemFont(ofSize: 12)
-        contentView.addSubview(positionLabel)
-        
-        NSLayoutConstraint.activate([
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
-            nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
-            
-            creatorLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
-            creatorLabel.bottomAnchor.constraint(equalTo: nameLabel.topAnchor, constant: -5),
-            
-            positionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-            positionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
-        ])
+		positionLabel.translatesAutoresizingMaskIntoConstraints = false
+		positionLabel.textColor = .lightText
+		positionLabel.font = UIFont.boldSystemFont(ofSize: 12)
+		positionLabel.textAlignment = .center
+		positionLabel.layer.backgroundColor = UIColor.white.withAlphaComponent(0.1).cgColor
+		positionLabel.layer.borderWidth = 1
+		positionLabel.layer.borderColor = UIColor.white.withAlphaComponent(0.1).cgColor
+		positionLabel.layer.cornerRadius = 15
+
+		contentView.addSubview(positionLabel)
+
+		NSLayoutConstraint.activate([
+			nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+			nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+			
+			creatorLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+			creatorLabel.bottomAnchor.constraint(equalTo: nameLabel.topAnchor, constant: -5),
+			
+			positionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
+			positionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+			positionLabel.widthAnchor.constraint(equalToConstant: 30),
+			positionLabel.heightAnchor.constraint(equalTo: positionLabel.widthAnchor)
+		])
+
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -97,7 +106,7 @@ class ListDemonCell: UICollectionViewCell {
     func configure(with demon: Demons) {
         nameLabel.text = demon.name.description
         creatorLabel.text = "By \(demon.publisher.name)"
-        positionLabel.text = "#" + demon.position.description
+        positionLabel.text = demon.position.description
         
         thumbnailImageView.image = nil
         

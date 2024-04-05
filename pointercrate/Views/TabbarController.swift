@@ -23,14 +23,14 @@ class TabbarController: UITabBarController {
 	}
 	
 	private func setupTabs() {
+		let hostingController = UIHostingController(rootView: ContentView())
+		
 		let list = self.createNavigation(with: "Demon List", and: UIImage(named: "Demon List"), vc: ListViewController())
-		let changes = self.createNavigation(with: "History", and: UIImage(named: "History"), vc: UIViewController())
-		let stats = self.createNavigation(with: "Stats", and: UIImage(named: "Stats"), vc: UIViewController())
+		let stats = self.createNavigation(with: "Stats", and: UIImage(named: "Stats"), vc: hostingController)
 		let settings = self.createNavigation(with: "Profile", and: UIImage(named: "Profile"), vc: ProfileViewController())
 
 		self.setViewControllers([
 			list,
-			changes,
 			stats,
 			settings
 		], animated: false)

@@ -16,6 +16,7 @@
 		33349B8E2BAD25540009AF41 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B8D2BAD25540009AF41 /* Preferences.swift */; };
 		33349B922BAD69610009AF41 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B912BAD69610009AF41 /* ProfileViewController.swift */; };
 		33349B942BADC2360009AF41 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B932BADC2360009AF41 /* UIColor.swift */; };
+		33652B272BBF79B900E1CFA7 /* YouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = 33652B262BBF79B900E1CFA7 /* YouTubeKit */; };
 		336686AE2BB8E5B000AC59C9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336686AD2BB8E5B000AC59C9 /* OnboardingViewController.swift */; };
 		336686B62BB9135900AC59C9 /* Onboarding.mov in Resources */ = {isa = PBXBuildFile; fileRef = 336686B52BB9135800AC59C9 /* Onboarding.mov */; };
 		336686B82BB928A700AC59C9 /* OnboardingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336686B72BB928A700AC59C9 /* OnboardingButton.swift */; };
@@ -57,6 +58,7 @@
 		33CF4E542BBE5F0F009C0129 /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CF4E532BBE5F0F009C0129 /* DisplayViewController.swift */; };
 		33CF4E562BBE5F83009C0129 /* UIInterfaceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CF4E552BBE5F83009C0129 /* UIInterfaceStyle.swift */; };
 		33CF4E592BBE6291009C0129 /* DisplayCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CF4E582BBE6291009C0129 /* DisplayCollectionTableViewCell.swift */; };
+		33CF4E602BBEB5A1009C0129 /* StatsViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CF4E5F2BBEB5A1009C0129 /* StatsViewer.swift */; };
 		33E0F4852BADC3C600242C93 /* Overdose_Sunrise.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33E0F4842BADC3C600242C93 /* Overdose_Sunrise.ttf */; };
 		AA90C3042BB8382F00158D15 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA90C3032BB8382F00158D15 /* AuthResponse.swift */; };
 /* End PBXBuildFile section */
@@ -110,6 +112,7 @@
 		33CF4E532BBE5F0F009C0129 /* DisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayViewController.swift; sourceTree = "<group>"; };
 		33CF4E552BBE5F83009C0129 /* UIInterfaceStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIInterfaceStyle.swift; sourceTree = "<group>"; };
 		33CF4E582BBE6291009C0129 /* DisplayCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCollectionTableViewCell.swift; sourceTree = "<group>"; };
+		33CF4E5F2BBEB5A1009C0129 /* StatsViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewer.swift; sourceTree = "<group>"; };
 		33E0F4842BADC3C600242C93 /* Overdose_Sunrise.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Overdose_Sunrise.ttf; sourceTree = "<group>"; };
 		33E0F4862BADD8AA00242C93 /* .github */ = {isa = PBXFileReference; lastKnownFileType = folder; path = .github; sourceTree = "<group>"; };
 		33E0F4882BADD8EB00242C93 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 			files = (
 				336A9D812BAE7EE100134693 /* NukeUI in Frameworks */,
 				336A9D7D2BAE7EE100134693 /* Nuke in Frameworks */,
+				33652B272BBF79B900E1CFA7 /* YouTubeKit in Frameworks */,
 				336A9D7F2BAE7EE100134693 /* NukeExtensions in Frameworks */,
 				336A9D832BAE7EE100134693 /* NukeVideo in Frameworks */,
 			);
@@ -220,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				339C00CF2BABE89A00944235 /* TabbarController.swift */,
+				33CF4E5F2BBEB5A1009C0129 /* StatsViewer.swift */,
 				336686AC2BB8E41E00AC59C9 /* Onboarding */,
 				339C010F2BAC3DB200944235 /* List */,
 				339C00EC2BABF3D700944235 /* Profile */,
@@ -400,6 +405,7 @@
 				336A9D7E2BAE7EE100134693 /* NukeExtensions */,
 				336A9D802BAE7EE100134693 /* NukeUI */,
 				336A9D822BAE7EE100134693 /* NukeVideo */,
+				33652B262BBF79B900E1CFA7 /* YouTubeKit */,
 			);
 			productName = pointercrate;
 			productReference = 339C00C82BABE89A00944235 /* pointercrate.app */;
@@ -431,6 +437,7 @@
 			mainGroup = 339C00BF2BABE89A00944235;
 			packageReferences = (
 				336A9D7B2BAE7EE100134693 /* XCRemoteSwiftPackageReference "Nuke" */,
+				33652B252BBF79B900E1CFA7 /* XCRemoteSwiftPackageReference "YouTubeKit" */,
 			);
 			productRefGroup = 339C00C92BABE89A00944235 /* Products */;
 			projectDirPath = "";
@@ -470,6 +477,7 @@
 				336A9DCE2BAF0A3100134693 /* Demons.swift in Sources */,
 				339C00CC2BABE89A00944235 /* AppDelegate.swift in Sources */,
 				AA90C3042BB8382F00158D15 /* AuthResponse.swift in Sources */,
+				33CF4E602BBEB5A1009C0129 /* StatsViewer.swift in Sources */,
 				339C01092BAC2B9900944235 /* GetDemons.swift in Sources */,
 				33349B922BAD69610009AF41 /* ProfileViewController.swift in Sources */,
 				33CF4E562BBE5F83009C0129 /* UIInterfaceStyle.swift in Sources */,
@@ -713,6 +721,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		33652B252BBF79B900E1CFA7 /* XCRemoteSwiftPackageReference "YouTubeKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alexeichhorn/YouTubeKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.1;
+			};
+		};
 		336A9D7B2BAE7EE100134693 /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke";
@@ -724,6 +740,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		33652B262BBF79B900E1CFA7 /* YouTubeKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33652B252BBF79B900E1CFA7 /* XCRemoteSwiftPackageReference "YouTubeKit" */;
+			productName = YouTubeKit;
+		};
 		336A9D7C2BAE7EE100134693 /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 336A9D7B2BAE7EE100134693 /* XCRemoteSwiftPackageReference "Nuke" */;
