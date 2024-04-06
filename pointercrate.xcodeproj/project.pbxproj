@@ -61,6 +61,7 @@
 		33CF4E592BBE6291009C0129 /* DisplayCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CF4E582BBE6291009C0129 /* DisplayCollectionTableViewCell.swift */; };
 		33CF4E602BBEB5A1009C0129 /* StatsViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CF4E5F2BBEB5A1009C0129 /* StatsViewer.swift */; };
 		33E0F4852BADC3C600242C93 /* Overdose_Sunrise.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33E0F4842BADC3C600242C93 /* Overdose_Sunrise.ttf */; };
+		33F7002E2BC1BECD007AA023 /* VariableBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F7002D2BC1BECD007AA023 /* VariableBlurView.swift */; };
 		AA90C3042BB8382F00158D15 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA90C3032BB8382F00158D15 /* AuthResponse.swift */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +122,7 @@
 		33E0F4892BADD8FC00242C93 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		33E0F48A2BADD90200242C93 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		33E0F48B2BADD91B00242C93 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		33F7002D2BC1BECD007AA023 /* VariableBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariableBlurView.swift; sourceTree = "<group>"; };
 		AA90C3032BB8382F00158D15 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,8 +145,9 @@
 		330D786C2BB3DF0600858187 /* DemonViewController */ = {
 			isa = PBXGroup;
 			children = (
-				33349B842BAD1D860009AF41 /* DemonHeader.swift */,
 				330D786D2BB3DF2100858187 /* DemonViewController.swift */,
+				33349B842BAD1D860009AF41 /* DemonHeader.swift */,
+				33F7002D2BC1BECD007AA023 /* VariableBlurView.swift */,
 			);
 			path = DemonViewController;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				338E24B92BB2518200561B18 /* RecordListing.swift in Sources */,
 				33349B942BADC2360009AF41 /* UIColor.swift in Sources */,
 				330D786B2BB3CCD800858187 /* Common.swift in Sources */,
+				33F7002E2BC1BECD007AA023 /* VariableBlurView.swift in Sources */,
 				339C00F62BAC068700944235 /* Config.swift in Sources */,
 				339C00EB2BABEF6D00944235 /* SectionHeader.swift in Sources */,
 				33CF4E592BBE6291009C0129 /* DisplayCollectionTableViewCell.swift in Sources */,

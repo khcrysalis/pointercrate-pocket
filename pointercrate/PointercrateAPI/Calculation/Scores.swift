@@ -39,3 +39,29 @@ public func score(progress: Int16, position: Double, requirement: Int16) -> Stri
 	}
 }
 
+func convertToMaxDefaultThumbnailURL(from url: String) -> String? {
+	if url.contains("mqdefault.jpg") {
+		let maxDefaultURL = url.replacingOccurrences(of: "mqdefault.jpg", with: "maxresdefault.jpg")
+		if let maxDefaultURL = URL(string: maxDefaultURL) {
+			let semaphore = DispatchSemaphore(value: 0)
+			var isMaxDefaultAvailable = false
+			var request = URLRequest(url: maxDefaultURL)
+			request.httpMethod = "HEAD"
+			
+			let task = URLSession.shared.dataTask(with: request) { (_, response, _) in
+				if let httpResponse = response as? HTTPURLResponse {
+					isMaxDefaultAvailable = (200...299).contains(httpResponse.statusCode)
+				}
+				semaphore.signal()
+			}
+			task.resume()
+			semaphore.wait()
+			
+			if isMaxDefaultAvailable {
+				return maxDefaultURL.absoluteString
+			}
+		}
+	}
+	return url
+}
+

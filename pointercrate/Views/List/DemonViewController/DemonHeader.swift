@@ -16,7 +16,7 @@ class HeaderController {
 	private var titleLabel: UILabel!
 	private var subLabel: UILabel!
 	
-	private var button2secondurl: String!
+	private var videoURL: String!
 
 	private var button1: UIButton!
 	private var button2: UIButton!
@@ -39,12 +39,34 @@ class HeaderController {
 	
 	func updateButtonsatt(position: String, video: String, maxpoints: String, minpoints: String) {
 		button1.setAttributedTitle(createAttributedTitle(primaryText: "Position", secondaryText: position), for: .normal)
-		button2secondurl = video
+		videoURL = video
+		button2.setAttributedTitle(createAttributedTitle(primaryText: "Video", secondaryText: "▶"), for: .normal)
 		button3.setAttributedTitle(createAttributedTitle(primaryText: "Max Points", secondaryText: maxpoints), for: .normal)
 		button4.setAttributedTitle(createAttributedTitle(primaryText: "Min Points", secondaryText: minpoints), for: .normal)
 	}
 
-	
+	private func configureButton(target: Any?, action: Selector?) -> UIButton {
+		let button = UIButton()
+		
+		let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
+		let blurEffectView = UIVisualEffectView(effect: blurEffect)
+		blurEffectView.frame = button.bounds
+		blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+		blurEffectView.layer.cornerRadius = 9
+		blurEffectView.clipsToBounds = true
+		button.addSubview(blurEffectView)
+		
+		button.titleLabel?.numberOfLines = 0
+		button.titleLabel?.lineBreakMode = .byWordWrapping
+		button.titleLabel?.textAlignment = .center
+		
+		if let target = target, let action = action {
+			button.addTarget(target, action: action, for: .touchUpInside)
+		}
+		
+		return button
+	}
+
 	init(view: UIView, height initial: CGFloat) {
 		self.view = view
 		initialHeight = initial
@@ -60,38 +82,11 @@ class HeaderController {
 		subLabel.textColor = UIColor.white.withAlphaComponent(0.4)
 		subLabel.numberOfLines = 0
 		subLabel.sizeToFit()
-		
-		let balls = UIColor.white.withAlphaComponent(0.1)
 
-		button1 = UIButton()
-		button1.backgroundColor = balls
-		button1.layer.cornerRadius = 9
-		button1.titleLabel?.numberOfLines = 0
-		button1.titleLabel?.lineBreakMode = .byWordWrapping
-		button1.titleLabel?.textAlignment = .center
-
-		button2 = UIButton()
-		button2.setAttributedTitle(createAttributedTitle(primaryText: "Video", secondaryText: "▶"), for: .normal)
-		button2.backgroundColor = balls
-		button2.layer.cornerRadius = 9
-		button2.titleLabel?.numberOfLines = 0
-		button2.titleLabel?.lineBreakMode = .byWordWrapping
-		button2.titleLabel?.textAlignment = .center
-		button2.addTarget(self, action: #selector(openURL), for: .touchUpInside)
-		
-		button3 = UIButton()
-		button3.backgroundColor = balls
-		button3.layer.cornerRadius = 9
-		button3.titleLabel?.numberOfLines = 0
-		button3.titleLabel?.lineBreakMode = .byWordWrapping
-		button3.titleLabel?.textAlignment = .center
-		
-		button4 = UIButton()
-		button4.backgroundColor = balls
-		button4.layer.cornerRadius = 9
-		button4.titleLabel?.numberOfLines = 0
-		button4.titleLabel?.lineBreakMode = .byWordWrapping
-		button4.titleLabel?.textAlignment = .center
+		button1 = configureButton(target: nil, action: nil)
+		button2 = configureButton(target: self, action: #selector(openURL))
+		button3 = configureButton(target: nil, action: nil)
+		button4 = configureButton(target: nil, action: nil)
 
 		view.addSubview(titleLabel)
 		view.addSubview(subLabel)
@@ -102,7 +97,7 @@ class HeaderController {
 	}
 	
 	@objc func openURL() {
-		guard let urlString = button2secondurl, let url = URL(string: urlString) else {
+		guard let urlString = videoURL, let url = URL(string: urlString) else {
 			print("Error: button2secondurl is nil or invalid")
 			return
 		}
@@ -193,10 +188,9 @@ class HeaderController {
 		subLabel.frame.origin = CGPoint(x: xPosition, y: yPosition + titleLabelHeight + 4 - 30)
 		
 		let availableWidth = view.bounds.width - 2 * leftMargin
-		let buttonWidth: CGFloat = (availableWidth - 3 * buttonSpacing) / 4    // Divide by 4 for 4 buttons and 3 spacings
-		//let buttonWidth: CGFloat = (availableWidth - buttonSpacing) / 2     // 2
+		let buttonWidth: CGFloat = (availableWidth - 3 * buttonSpacing) / 4
 		
-		let buttonYPosition = yPosition + titleLabelHeight + subLabelHeight + 20 - 20
+		let buttonYPosition = yPosition + titleLabelHeight + subLabelHeight + 20 - 30
 		
 		button1.frame = CGRect(x: leftMargin, y: buttonYPosition, width: buttonWidth, height: 50)
 		button2.frame = CGRect(x: button1.frame.maxX + buttonSpacing, y: buttonYPosition, width: buttonWidth, height: 50)
