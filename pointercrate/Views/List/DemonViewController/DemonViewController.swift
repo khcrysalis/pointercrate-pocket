@@ -167,6 +167,15 @@ extension DemonViewController: UITableViewDelegate, UITableViewDataSource {
 		for v in countryCode.unicodeScalars { s.unicodeScalars.append(UnicodeScalar(base + v.value)!) }
 		return String(s) + "  "
 	}
+	
+	func calculateScore(progress: Double) -> String {
+		let positionValue = self.records?.data.position ?? 0
+		let position = Int16(positionValue)
+		let requirementValue = self.records?.data.requirement ?? 0
+		let requirement = Int16(requirementValue)
+		let maxpoints = score(progress: Int16(progress), position: Double(position), requirement: requirement)
+		return "\(maxpoints)"
+	}
 }
 
 extension DemonViewController {
@@ -175,13 +184,25 @@ extension DemonViewController {
 			do {
 				self.records = try await PointercrateAPI.shared.getDemon(id: demonID!)
 				
+
+
+				
 				if let thumbnailURLString = self.records?.data.thumbnail,
 				   let thumbnailURL = URL(string: thumbnailURLString),
 				   let imageData = try? Data(contentsOf: thumbnailURL) {
 					let image = UIImage(data: imageData)
 					DispatchQueue.main.async {
 						UIView.transition(with: self.headerImageView!, duration: 0.3, options: .transitionCrossDissolve, animations: {
-							self.stickyHeaderController?.updateButtonsatt(title: "\(self.records?.data.position ?? 0)", url: self.records?.data.video ?? "")
+							self.stickyHeaderController?.updateButtonsatt(
+								position: "\(self.records?.data.position ?? 0)",
+								video: self.records?.data.video ?? "",
+								maxpoints: self.calculateScore(progress: 100),
+								minpoints: self.calculateScore(progress: Double((self.records?.data.requirement)!))
+							)
+							
+							
+							
+							
 							self.stickyHeaderController.updateTitle(self.records?.data.name ?? "")
 							self.stickyHeaderController.updateSubtitle("By \(self.records?.data.publisher.name ?? ""), verified by \(self.records?.data.verifier.name ?? "")")
 							self.stickyHeaderController.layoutStickyView()
@@ -192,7 +213,12 @@ extension DemonViewController {
 					}
 				} else {
 					DispatchQueue.main.async {
-						self.stickyHeaderController?.updateButtonsatt(title: "\(self.records?.data.position ?? 0)", url: self.records?.data.video ?? "")
+						self.stickyHeaderController?.updateButtonsatt(
+							position: "\(self.records?.data.position ?? 0)",
+							video: self.records?.data.video ?? "",
+							maxpoints: self.calculateScore(progress: 100),
+							minpoints: self.calculateScore(progress: Double((self.records?.data.requirement)!))
+						)
 						self.stickyHeaderController.updateTitle(self.records?.data.name ?? "")
 						self.stickyHeaderController.updateSubtitle("By \(self.records?.data.publisher.name ?? ""), verified by \(self.records?.data.verifier.name ?? "")")
 						self.stickyHeaderController.layoutStickyView()
