@@ -139,7 +139,7 @@ extension DemonViewController: UITableViewDelegate, UITableViewDataSource {
 	func numberOfSections(in tableView: UITableView) -> Int { return sectionTitles.count }
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let title = sectionTitles[section]
-		let headerView = CustomSectionHeader(title: title, topAnchorConstant: 27)
+		let headerView = CustomSectionHeader(title: title, topAnchorConstant: 20)
 		return headerView
 	}
 	
@@ -174,15 +174,43 @@ extension DemonViewController: UITableViewDelegate, UITableViewDataSource {
 			if let record = records?.data.records?[recordIndex] {
 				let countryCode = record.nationality?.country_code
 				let flagEmoji = flag(country: countryCode)
-				cell.textLabel?.text = flagEmoji + record.player.name
-				cell.detailTextLabel?.text = "\(record.progress)%"
+				cell = UITableViewCell(style: .default, reuseIdentifier: "CustomCell")
+				
+				let titleLabel = UILabel(frame: CGRect(x: 16, y: 12, width: cell.contentView.frame.width, height: 20))
+				titleLabel.text = flagEmoji + record.player.name
+				titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+				cell.contentView.addSubview(titleLabel)
+				
+				let progressBar = UIProgressView(progressViewStyle: .default)
+				progressBar.frame = CGRect(x: 16, y: 46, width: cell.contentView.frame.width - 95, height: 20)
+				progressBar.progress = Float(record.progress) / 100
+				cell.contentView.addSubview(progressBar)
+				
+				let progressLabelX = progressBar.frame.origin.x + progressBar.frame.size.width + 10
+				let progressLabel = UILabel(frame: CGRect(x: progressLabelX, y: 36, width: 100, height: 20))
+				progressLabel.text = "\(record.progress)%"
+				progressLabel.textColor = .systemGray
+				progressLabel.font = .boldSystemFont(ofSize: 12)
+				cell.contentView.addSubview(progressLabel)
+
 				Append().accessoryIcon(to: cell, with: "arrow.up.right")
 			}
+
+
 		default:
 			break
 		}
 		
 		return cell
+	}
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		switch indexPath.section {
+		case 1:
+			return 65
+		default:
+			return UITableView.automaticDimension
+		}
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
