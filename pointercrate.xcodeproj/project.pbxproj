@@ -14,7 +14,7 @@
 		33349B852BAD1D860009AF41 /* DemonHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B842BAD1D860009AF41 /* DemonHeader.swift */; };
 		33349B892BAD1E510009AF41 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B882BAD1E510009AF41 /* LicenseViewController.swift */; };
 		33349B8E2BAD25540009AF41 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B8D2BAD25540009AF41 /* Preferences.swift */; };
-		33349B922BAD69610009AF41 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B912BAD69610009AF41 /* ProfileViewController.swift */; };
+		33349B922BAD69610009AF41 /* StatsViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B912BAD69610009AF41 /* StatsViewerViewController.swift */; };
 		33349B942BADC2360009AF41 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33349B932BADC2360009AF41 /* UIColor.swift */; };
 		33652B272BBF79B900E1CFA7 /* YouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = 33652B262BBF79B900E1CFA7 /* YouTubeKit */; };
 		336686AE2BB8E5B000AC59C9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336686AD2BB8E5B000AC59C9 /* OnboardingViewController.swift */; };
@@ -73,7 +73,7 @@
 		33349B842BAD1D860009AF41 /* DemonHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemonHeader.swift; sourceTree = "<group>"; };
 		33349B882BAD1E510009AF41 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		33349B8D2BAD25540009AF41 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
-		33349B912BAD69610009AF41 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		33349B912BAD69610009AF41 /* StatsViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewerViewController.swift; sourceTree = "<group>"; };
 		33349B932BADC2360009AF41 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		336686AD2BB8E5B000AC59C9 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		336686B52BB9135800AC59C9 /* Onboarding.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Onboarding.mov; sourceTree = "<group>"; };
@@ -233,7 +233,8 @@
 				33CF4E5F2BBEB5A1009C0129 /* StatsViewer.swift */,
 				336686AC2BB8E41E00AC59C9 /* Onboarding */,
 				339C010F2BAC3DB200944235 /* List */,
-				339C00EC2BABF3D700944235 /* Profile */,
+				339C00EC2BABF3D700944235 /* Stats */,
+				33CF4E522BBE5EFB009C0129 /* Settings */,
 				338E249D2BAFFBE500561B18 /* Other */,
 			);
 			path = Views;
@@ -262,13 +263,12 @@
 			path = Design;
 			sourceTree = "<group>";
 		};
-		339C00EC2BABF3D700944235 /* Profile */ = {
+		339C00EC2BABF3D700944235 /* Stats */ = {
 			isa = PBXGroup;
 			children = (
-				33349B912BAD69610009AF41 /* ProfileViewController.swift */,
-				33CF4E522BBE5EFB009C0129 /* Settings */,
+				33349B912BAD69610009AF41 /* StatsViewerViewController.swift */,
 			);
-			path = Profile;
+			path = Stats;
 			sourceTree = "<group>";
 		};
 		339C00F12BAC032600944235 /* API */ = {
@@ -493,7 +493,7 @@
 				AA90C3042BB8382F00158D15 /* AuthResponse.swift in Sources */,
 				33CF4E602BBEB5A1009C0129 /* StatsViewer.swift in Sources */,
 				339C01092BAC2B9900944235 /* GetDemons.swift in Sources */,
-				33349B922BAD69610009AF41 /* ProfileViewController.swift in Sources */,
+				33349B922BAD69610009AF41 /* StatsViewerViewController.swift in Sources */,
 				33CF4E562BBE5F83009C0129 /* UIInterfaceStyle.swift in Sources */,
 				339C00F82BAC090F00944235 /* BaseNetworking.swift in Sources */,
 				339C00E42BABEA9400944235 /* ListViewController.swift in Sources */,

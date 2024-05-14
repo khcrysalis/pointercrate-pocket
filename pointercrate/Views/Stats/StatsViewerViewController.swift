@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class StatsViewerViewController: UIViewController {
 
     var tableView: UITableView!
     

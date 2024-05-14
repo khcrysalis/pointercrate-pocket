@@ -23,17 +23,15 @@ class TabbarController: UITabBarController {
 	}
 	
 	private func setupTabs() {
-		let hostingController = UIHostingController(rootView: ContentView())
-		
 		let list = self.createNavigation(with: "Demon List", and: UIImage(named: "Demon List"), vc: ListViewController())
-		let stats = self.createNavigation(with: "Stats", and: UIImage(named: "Stats"), vc: hostingController)
-		let profile = self.createNavigation(with: "Profile", and: UIImage(named: "Profile"), vc: ProfileViewController())
+		let stats = self.createNavigation(with: "Stats", and: UIImage(named: "Stats"), vc: StatsViewerViewController())
+		//let profile = self.createNavigation(with: "Profile", and: UIImage(named: "Profile"), vc: ProfileViewController())
 		let settings = self.createNavigation(with: "Settings", and: UIImage(systemName: "gearshape.circle.fill"), vc: SettingsViewController())
 
 		self.setViewControllers([
 			list,
 			stats,
-			profile,
+			//profile,
 			settings
 		], animated: false)
 	}
