@@ -8,8 +8,11 @@
 
 Geometry Dash Demonlist application for iOS/iPadOS systems.
 
+Android variant can be found [here](https://github.com/wingio/Hellish).
+
 ## TODO
 - add stat viewer & time machine
+- do not have bad sorting or anything similar
 
 ## Building on macOS
 | Command | Action | 
