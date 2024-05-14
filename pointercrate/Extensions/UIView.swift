@@ -5,38 +5,39 @@
 //  Created by samara on 3/21/24.
 //
 
-import Foundation
 import UIKit
 
 class GradientBlurImageView: UIImageView {
-    private var gradientLayer: CAGradientLayer?
+	private var variableBlurView: UIVariableBlurView?
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        if gradientLayer == nil {
-            applyGradientBlur()
-        }
-    }
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		if variableBlurView == nil {
+			setupVariableBlurView()
+		}
+	}
 
-    private func applyGradientBlur() {
-        gradientLayer?.removeFromSuperlayer()
+	private func setupVariableBlurView() {
+		variableBlurView = UIVariableBlurView(frame: bounds)
+		guard let variableBlurView = variableBlurView else { return }
+		variableBlurView.translatesAutoresizingMaskIntoConstraints = false
 
-        gradientLayer = CAGradientLayer()
-        gradientLayer?.colors = [
-            UIColor.white.withAlphaComponent(0).cgColor,
-            UIColor.white.withAlphaComponent(1).cgColor
-        ]
-        gradientLayer?.frame = bounds
-        gradientLayer?.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientLayer?.endPoint = CGPoint(x: 0.0, y: 0.7)
+		let gradientMask = VariableBlurViewConstants.defaultGradientMask
+		variableBlurView.gradientMask = gradientMask
 
-        if let gradientLayer = gradientLayer {
-            let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterialDark))
-            effectView.frame = bounds
-            effectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            effectView.layer.mask = gradientLayer
+		addSubview(variableBlurView)
+		sendSubviewToBack(variableBlurView)
 
-            addSubview(effectView)
-        }
-    }
+		NSLayoutConstraint.deactivate(variableBlurView.constraints)
+
+		let blurViewHeight = bounds.height * 0.5
+		NSLayoutConstraint.activate([
+			variableBlurView.leadingAnchor.constraint(equalTo: leadingAnchor),
+			variableBlurView.trailingAnchor.constraint(equalTo: trailingAnchor),
+			variableBlurView.heightAnchor.constraint(equalToConstant: blurViewHeight),
+			variableBlurView.bottomAnchor.constraint(equalTo: bottomAnchor)
+		])
+
+		variableBlurView.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+	}
 }

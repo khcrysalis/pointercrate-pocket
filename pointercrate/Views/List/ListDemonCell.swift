@@ -67,25 +67,25 @@ class ListDemonCell: UICollectionViewCell {
         
 		positionLabel.translatesAutoresizingMaskIntoConstraints = false
 		positionLabel.textColor = .lightText
-		positionLabel.font = UIFont.boldSystemFont(ofSize: 12)
+		positionLabel.font = UIFont.boldSystemFont(ofSize: 16)
 		positionLabel.textAlignment = .center
 		positionLabel.layer.backgroundColor = UIColor.white.withAlphaComponent(0.1).cgColor
 		positionLabel.layer.borderWidth = 1
 		positionLabel.layer.borderColor = UIColor.white.withAlphaComponent(0.1).cgColor
-		positionLabel.layer.cornerRadius = 15
+		positionLabel.layer.cornerRadius = 20
 
 		contentView.addSubview(positionLabel)
 
 		NSLayoutConstraint.activate([
-			nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+			nameLabel.leadingAnchor.constraint(equalTo: positionLabel.trailingAnchor, constant: 12),
 			nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
 			
-			creatorLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+			creatorLabel.leadingAnchor.constraint(equalTo: positionLabel.trailingAnchor, constant: 12),
 			creatorLabel.bottomAnchor.constraint(equalTo: nameLabel.topAnchor, constant: -5),
 			
-			positionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
+			positionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
 			positionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
-			positionLabel.widthAnchor.constraint(equalToConstant: 30),
+			positionLabel.widthAnchor.constraint(equalToConstant: 40),
 			positionLabel.heightAnchor.constraint(equalTo: positionLabel.widthAnchor)
 		])
 

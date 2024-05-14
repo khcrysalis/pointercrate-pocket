@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import Nuke
+import NukeExtensions
+
 extension UIImage.SymbolConfiguration {
 	static let navigationBarItem = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium)
 }
-class DemonViewController: UIViewController {
+
+class DemonViewController: UIViewController, UIGestureRecognizerDelegate {
 	var tableView: UITableView!
 	
 	private var activityIndicator: UIActivityIndicatorView!
@@ -36,6 +40,8 @@ class DemonViewController: UIViewController {
 		setupViews()
 		setupHeader()
 		loadDemon()
+		self.navigationController?.interactivePopGestureRecognizer!.delegate = self;
+
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
@@ -247,10 +253,7 @@ extension DemonViewController {
 		Task {
 			do {
 				self.records = try await PointercrateAPI.shared.getDemon(id: demonID!)
-				
 
-
-				
 				if let thumbnailURLString = convertToMaxDefaultThumbnailURL(from: (self.records?.data.thumbnail)!),
 				   
 				   let thumbnailURL = URL(string: thumbnailURLString),
@@ -265,15 +268,35 @@ extension DemonViewController {
 								minpoints: self.calculateScore(progress: Double((self.records?.data.requirement)!))
 							)
 							
-							
-							
-							
 							self.stickyHeaderController.updateTitle(self.records?.data.name ?? "")
 							self.stickyHeaderController.updateSubtitle("By \(self.records?.data.publisher.name ?? ""), verified by \(self.records?.data.verifier.name ?? "")")
 							self.stickyHeaderController.layoutStickyView()
 							self.headerView.isHidden = false
 							self.tableView.isHidden = false
-							self.headerImageView?.image = image
+							
+							if let thumbnailURL = URL(string: thumbnailURLString) {
+								let request = ImageRequest(url: thumbnailURL)
+								
+								if let image = ImagePipeline.shared.cache.cachedImage(for: request) {
+									self.headerImageView?.image = image.image
+								} else {
+									ImagePipeline.shared.loadImage(
+										with: request,
+										progress: nil,
+										completion: { [weak self] result in
+											guard let self = self else { return }
+											switch result {
+											case .success(let imageResponse):
+												DispatchQueue.main.async {
+													self.headerImageView?.image = imageResponse.image
+												}
+											case .failure(let error):
+												print("Image loading failed with error: \(error)")
+											}
+										}
+									)
+								}
+							}
 						}, completion: nil)
 					}
 				} else {

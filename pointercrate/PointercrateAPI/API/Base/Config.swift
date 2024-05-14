@@ -11,10 +11,8 @@ import CryptoKit
 public struct PointercrateAPIConfig {
     public static let `default` = {
         
-        let lang = Locale.current.identifier
         
         var headers = [
-            "Accept-Language": lang,
             "App-OS": "Android",
             "App-OS-Version": "Android 10.0",
             "App-Version": "1.0",

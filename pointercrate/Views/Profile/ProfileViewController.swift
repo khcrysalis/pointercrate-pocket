@@ -27,13 +27,5 @@ class ProfileViewController: UIViewController {
     
     fileprivate func setupNavigation() {
         self.navigationItem.title = nil
-        let n = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: #selector(openSettings))
-        self.navigationItem.rightBarButtonItem = n
-    }
-    
-    @objc func openSettings() {
-        let svc = SettingsViewController()
-		svc.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(svc, animated: true)
     }
 }
