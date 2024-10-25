@@ -24,7 +24,7 @@ class GradientBlurImageView: UIImageView {
 
 		let gradientMask = VariableBlurViewConstants.defaultGradientMask
 		variableBlurView.gradientMask = gradientMask
-
+		variableBlurView.alpha = 0.95
 		addSubview(variableBlurView)
 		sendSubviewToBack(variableBlurView)
 

@@ -78,9 +78,11 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
 			cell.layer.borderWidth = 2.0
 			cell.layer.borderColor = Preferences.appTintColor.uiColor.cgColor
 			cell.layer.cornerRadius = 10.5
+			cell.layer.cornerCurve = .continuous
 		} else {
 			cell.layer.borderColor = UIColor.clear.cgColor
 			cell.layer.borderWidth = 0.0
+			cell.layer.cornerCurve = .continuous
 		}
 		
 		return cell

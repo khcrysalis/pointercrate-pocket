@@ -25,7 +25,14 @@ class StatsViewerViewController: UIViewController {
 		self.view.backgroundColor = .systemBackground
     }
     
-    fileprivate func setupNavigation() {
-        self.navigationItem.title = nil
-    }
+	fileprivate func setupNavigation() {
+		self.title = "Leaderboard"
+		self.navigationController?.navigationBar.prefersLargeTitles = true
+		let n = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .done, target: self, action: #selector(testButtonTapped))
+		self.navigationItem.rightBarButtonItem = n
+	}
+	
+	@objc func testButtonTapped() {
+		print("hiii")
+	}
 }

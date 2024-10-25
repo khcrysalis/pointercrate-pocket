@@ -22,6 +22,7 @@ class DemonViewController: UIViewController, UIGestureRecognizerDelegate {
 	private var headerImageView: UIImageView?
 	private var headerView: UIView!
 	private var stickyHeaderController: HeaderController!
+	private var video: String?
 	
 	var sectionTitles: [String] {
 		return ["Records", ""]
@@ -31,6 +32,7 @@ class DemonViewController: UIViewController, UIGestureRecognizerDelegate {
 		didSet {
 			if let demonID = demonID {
 				print("Demon ID set to: \(demonID)")
+				video = self.records?.data.video
 			}
 		}
 	}
@@ -54,12 +56,19 @@ class DemonViewController: UIViewController, UIGestureRecognizerDelegate {
 		config = config.applying(UIImage.SymbolConfiguration(paletteColors: [.darkGray, .white]))
 
 		let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left.circle.fill", withConfiguration: config), style: .plain, target: self, action: #selector(backToMain))
-		
 		navigationItem.leftBarButtonItem = backButton
+		let viado = UIBarButtonItem(image: UIImage(systemName: "play.circle.fill", withConfiguration: config), style: .plain, target: self, action: #selector(openURL))
+		navigationItem.rightBarButtonItem = viado
 	}
 	
-	@objc func backToMain() {
-		self.navigationController?.popViewController(animated: true)
+	@objc func backToMain() { self.navigationController?.popViewController(animated: true) }
+	@objc func openURL() {
+		guard let urlString = URL(string: video!) else {
+			print("Error: button2secondurl is nil or invalid")
+			return
+		}
+
+		UIApplication.shared.open((URL(string: video!) ?? URL(string: ""))!, options: [:], completionHandler: nil)
 	}
 	
 	fileprivate func setupViews() {
@@ -136,6 +145,7 @@ class DemonViewController: UIViewController, UIGestureRecognizerDelegate {
 		} else {
 			setupNavigation()
 		}
+		
 	}
 
 }
@@ -263,9 +273,9 @@ extension DemonViewController {
 						UIView.transition(with: self.headerImageView!, duration: 0.3, options: .transitionCrossDissolve, animations: {
 							self.stickyHeaderController?.updateButtonsatt(
 								position: "\(self.records?.data.position ?? 0)",
-								video: self.records?.data.video ?? "",
 								maxpoints: self.calculateScore(progress: 100),
-								minpoints: self.calculateScore(progress: Double((self.records?.data.requirement)!))
+								minpoints: self.calculateScore(progress: Double((self.records?.data.requirement)!)), 
+								listperc: "\(self.records?.data.requirement ?? 0)"
 							)
 							
 							self.stickyHeaderController.updateTitle(self.records?.data.name ?? "")
@@ -303,9 +313,9 @@ extension DemonViewController {
 					DispatchQueue.main.async {
 						self.stickyHeaderController?.updateButtonsatt(
 							position: "\(self.records?.data.position ?? 0)",
-							video: self.records?.data.video ?? "",
 							maxpoints: self.calculateScore(progress: 100),
-							minpoints: self.calculateScore(progress: Double((self.records?.data.requirement)!))
+							minpoints: self.calculateScore(progress: Double((self.records?.data.requirement)!)), 
+							listperc: "\(self.records?.data.requirement ?? 0)"
 						)
 						self.stickyHeaderController.updateTitle(self.records?.data.name ?? "")
 						self.stickyHeaderController.updateSubtitle("By \(self.records?.data.publisher.name ?? ""), verified by \(self.records?.data.verifier.name ?? "")")

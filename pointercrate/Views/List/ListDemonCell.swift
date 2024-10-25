@@ -30,6 +30,7 @@ class ListDemonCell: UICollectionViewCell {
     
     private func configureUI() {
         layer.cornerRadius = 12
+		layer.cornerCurve = .continuous
         layer.borderWidth = 1
         
         let isDarkMode = traitCollection.userInterfaceStyle == .dark

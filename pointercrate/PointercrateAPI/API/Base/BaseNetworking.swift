@@ -173,10 +173,11 @@ extension PointercrateAPI {
 	func getReq<T: Decodable>(
 		path: String,
 		query: [URLQueryItem] = [],
+		headers: [String: String] = [:],
 		useAuth: Bool = true
 	) async throws -> T {
 		// This helps debug JSON decoding errors
-		let respData = try await makeRequest(path: path, query: query, useAuth: useAuth)
+		let respData = try await makeRequest(path: path, query: query, headers: headers, useAuth: useAuth)
 		do {
 			return try PointercrateAPI.decoder.decode(T.self, from: respData)
 		} catch {

@@ -16,10 +16,7 @@ class HeaderController {
 	private var titleLabel: UILabel!
 	private var subLabel: UILabel!
 	
-	private var videoURL: String!
-
 	private var button1: UIButton!
-	private var button2: UIButton!
 	private var button3: UIButton!
 	private var button4: UIButton!
 	
@@ -37,12 +34,10 @@ class HeaderController {
 		subLabel.sizeToFit()
 	}
 	
-	func updateButtonsatt(position: String, video: String, maxpoints: String, minpoints: String) {
+	func updateButtonsatt(position: String, maxpoints: String, minpoints: String, listperc: String) {
 		button1.setAttributedTitle(createAttributedTitle(primaryText: "Position", secondaryText: position), for: .normal)
-		videoURL = video
-		button2.setAttributedTitle(createAttributedTitle(primaryText: "Video", secondaryText: "▶"), for: .normal)
-		button3.setAttributedTitle(createAttributedTitle(primaryText: "Max Points", secondaryText: maxpoints), for: .normal)
-		button4.setAttributedTitle(createAttributedTitle(primaryText: "Min Points", secondaryText: minpoints), for: .normal)
+		button3.setAttributedTitle(createAttributedTitle(primaryText: "Score (100%)", secondaryText: maxpoints), for: .normal)
+		button4.setAttributedTitle(createAttributedTitle(primaryText: "Score (\(listperc)%)", secondaryText: minpoints), for: .normal)
 	}
 
 	private func configureButton(target: Any?, action: Selector?) -> UIButton {
@@ -53,6 +48,7 @@ class HeaderController {
 		blurEffectView.frame = button.bounds
 		blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 		blurEffectView.layer.cornerRadius = 9
+		blurEffectView.layer.cornerCurve = .continuous
 		blurEffectView.clipsToBounds = true
 		button.addSubview(blurEffectView)
 		
@@ -84,25 +80,14 @@ class HeaderController {
 		subLabel.sizeToFit()
 
 		button1 = configureButton(target: nil, action: nil)
-		button2 = configureButton(target: self, action: #selector(openURL))
 		button3 = configureButton(target: nil, action: nil)
 		button4 = configureButton(target: nil, action: nil)
 
 		view.addSubview(titleLabel)
 		view.addSubview(subLabel)
 		view.addSubview(button1)
-		view.addSubview(button2)
 		view.addSubview(button3)
 		view.addSubview(button4)
-	}
-	
-	@objc func openURL() {
-		guard let urlString = videoURL, let url = URL(string: urlString) else {
-			print("Error: button2secondurl is nil or invalid")
-			return
-		}
-
-		UIApplication.shared.open(url, options: [:], completionHandler: nil)
 	}
 
 	
@@ -188,13 +173,12 @@ class HeaderController {
 		subLabel.frame.origin = CGPoint(x: xPosition, y: yPosition + titleLabelHeight + 4 - 30)
 		
 		let availableWidth = view.bounds.width - 2 * leftMargin
-		let buttonWidth: CGFloat = (availableWidth - 3 * buttonSpacing) / 4
+		let buttonWidth: CGFloat = (availableWidth - 2 * buttonSpacing) / 3
 		
 		let buttonYPosition = yPosition + titleLabelHeight + subLabelHeight + 20 - 30
 		
 		button1.frame = CGRect(x: leftMargin, y: buttonYPosition, width: buttonWidth, height: 50)
-		button2.frame = CGRect(x: button1.frame.maxX + buttonSpacing, y: buttonYPosition, width: buttonWidth, height: 50)
-		button3.frame = CGRect(x: button2.frame.maxX + buttonSpacing, y: buttonYPosition, width: buttonWidth, height: 50)
+		button3.frame = CGRect(x: button1.frame.maxX + buttonSpacing, y: buttonYPosition, width: buttonWidth, height: 50)
 		button4.frame = CGRect(x: button3.frame.maxX + buttonSpacing, y: buttonYPosition, width: buttonWidth, height: 50)
 	}
 

@@ -18,9 +18,11 @@ extension PointercrateAPI {
                                 publisherName: String? = nil,
                                 limit: Int? = nil,
                                 after: Int? = nil,
-                                before: Int? = nil
+                                before: Int? = nil,
+								page: Int? = nil
     ) async throws -> [Demons]
     {
+		var headers: [String: String] = [:]
         let queryItems: [URLQueryItem?] = [
             name.map { URLQueryItem(name: "name", value: $0) },
             nameContains.map { URLQueryItem(name: "name_contains", value: $0) },
@@ -33,11 +35,20 @@ extension PointercrateAPI {
             after.map { URLQueryItem(name: "after", value: String($0)) },
             before.map { URLQueryItem(name: "before", value: String($0)) }
         ]
+		
+		if let page = page {
+			headers["Page"] = String(page)
+		}
         
         let compactQueryItems = queryItems.compactMap { $0 }
         
-        return try await getReq(path: "/v2/demons/listed/", query: compactQueryItems)
+        return try await getReq(path: "/v2/demons/listed/", query: compactQueryItems, headers: headers)
     }
+	
+	
+	
+	
+	
     /// https://pointercrate.com/documentation/demons#list-all-demons
     public func getDemons(name: String? = nil,
                           nameContains: String? = nil,

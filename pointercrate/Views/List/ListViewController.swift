@@ -19,7 +19,6 @@ class ListViewController: UIViewController {
     
 	public var demons: [Demons] = []
     public var filteredDemons: [Demons] = []
-	private var isLoadingMoreDemons = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -201,8 +200,8 @@ extension ListViewController: UICollectionViewDelegate {
 		let height = scrollView.frame.size.height
 		
 		if offsetY > contentHeight - height {
-			if Filter.selectedList == 2 && !isLoadingMoreDemons {
-				loadMoreDemons()
+			if Filter.selectedList == 2 {
+				print("hiii")
 			}
 		}
 	}
@@ -223,7 +222,8 @@ extension ListViewController {
                                                                                publisherName: Filter.publisherName,
                                                                                limit: Filter.limit,
                                                                                after: Filter.after,
-                                                                               before: Filter.before)
+                                                                               before: Filter.before
+				)
             
 				DispatchQueue.main.async {
 					UIView.animate(withDuration: 0.2, animations: {
@@ -260,37 +260,4 @@ extension ListViewController {
 			}
         }
     }
-	
-	func loadMoreDemons() {
-		isLoadingMoreDemons = true
-		Filter.after! += Filter.limit
-		Task {
-			do {
-				let moreDemons = try await PointercrateAPI.shared.getRankedDemons(name: Filter.name,
-																				   nameContains: Filter.nameContains,
-																				   requirement: Filter.requirement,
-																				   verifierID: Filter.verifierID,
-																				   publisherID: Filter.publisherID,
-																				   verifierName: Filter.verifierName,
-																				   publisherName: Filter.publisherName,
-																				   limit: Filter.limit,
-																				   after: Filter.after,
-																				   before: Filter.before)
-				self.demons.append(contentsOf: moreDemons)
-				DispatchQueue.main.async {
-					let startIndex = self.demons.count - moreDemons.count
-					let endIndex = self.demons.count
-					let indexPaths = (startIndex..<endIndex).map { IndexPath(item: $0, section: 0) }
-					self.collectionView.performBatchUpdates({
-						self.collectionView.insertItems(at: indexPaths)
-					}, completion: { _ in
-						self.isLoadingMoreDemons = false
-					})
-				}
-			} catch {
-				print("Error fetching more demons: \(error)")
-				self.isLoadingMoreDemons = false
-			}
-		}
-	}
 }
